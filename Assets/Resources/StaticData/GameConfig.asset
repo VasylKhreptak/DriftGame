@@ -22,5 +22,15 @@ MonoBehaviour:
     _name: MainMenu
     _path: Assets/Scenes/MainMenu.unity
     _buildIndex: 1
+  _garageScene:
+    _sceneOB: {fileID: 102900000, guid: fbb154c0940a9714688f7dcae4f6709f, type: 3}
+    _name: Garage
+    _path: 
+    _buildIndex: -1
+  _gameplayScene:
+    _sceneOB: {fileID: 102900000, guid: e75ace5a42cf5734c8374c8bda57d3ce, type: 3}
+    _name: Gameplay
+    _path: 
+    _buildIndex: -1
   _editorLogType: -1
   _buildLogType: 0

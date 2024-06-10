@@ -11,6 +11,8 @@ namespace Infrastructure.Data.Static
         [Header("Scenes")]
         [SerializeField] private SceneField _bootstrapScene;
         [SerializeField] private SceneField _mainMenuScene;
+        [SerializeField] private SceneField _garageScene;
+        [SerializeField] private SceneField _gameplayScene;
 
         [Header("Log Preferences")]
         [SerializeField]
@@ -19,6 +21,8 @@ namespace Infrastructure.Data.Static
 
         public SceneField BootstrapScene => _bootstrapScene;
         public SceneField MainMenuScene => _mainMenuScene;
+        public SceneField GarageScene => _garageScene;
+        public SceneField GameplayScene => _gameplayScene;
 
         public LogType LogType => Application.isEditor ? _editorLogType : _buildLogType;
     }
