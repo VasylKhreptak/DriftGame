@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using LogType = Infrastructure.Services.Log.Core.LogType;
 
 namespace Infrastructure.Data.Static
@@ -8,7 +9,7 @@ namespace Infrastructure.Data.Static
     {
         [Header("Scenes")]
         [SerializeField] private string _bootstrapScene = "Bootstrap";
-        [SerializeField] private string _mainScene = "MainScene";
+        [SerializeField] private string _mainMenuScene = "MainScene";
 
         [Header("Log Preferences")]
         [SerializeField]
@@ -16,7 +17,7 @@ namespace Infrastructure.Data.Static
         [SerializeField] private LogType _buildLogType = LogType.Info;
 
         public string BootstrapScene => _bootstrapScene;
-        public string MainScene => _mainScene;
+        public string MainMenuScene => _mainMenuScene;
 
         public LogType LogType => Application.isEditor ? _editorLogType : _buildLogType;
     }
