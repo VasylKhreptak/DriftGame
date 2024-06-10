@@ -1,6 +1,5 @@
 using Udar.SceneManager;
 using UnityEngine;
-using UnityEngine.Serialization;
 using LogType = Infrastructure.Services.Log.Core.LogType;
 
 namespace Infrastructure.Data.Static
@@ -15,8 +14,7 @@ namespace Infrastructure.Data.Static
         [SerializeField] private SceneField _gameplayScene;
 
         [Header("Log Preferences")]
-        [SerializeField]
-        private LogType _editorLogType = LogType.Info;
+        [SerializeField] private LogType _editorLogType = LogType.Info;
         [SerializeField] private LogType _buildLogType = LogType.Info;
 
         public SceneField BootstrapScene => _bootstrapScene;
