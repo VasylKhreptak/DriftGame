@@ -14,7 +14,7 @@ namespace UI.Buttons.Core
 
         private void OnEnable() => _button.onClick.AddListener(OnClicked);
 
-        private void OnDisable() => _button.onClick.RemoveListener(OnClicked);
+        protected virtual void OnDisable() => _button.onClick.RemoveListener(OnClicked);
 
         #endregion
 

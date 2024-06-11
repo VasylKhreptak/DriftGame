@@ -161,7 +161,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.Architecture
+    Android: com.DefaultCompany.DriftGame
     Standalone: com.DefaultCompany.Architecture
   buildNumber:
     Standalone: 0
