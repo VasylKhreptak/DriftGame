@@ -29,15 +29,9 @@ namespace Infrastructure.Services.Framerate
             StartUpdatingAverageFramerate();
         }
 
-        public void Dispose()
-        {
-            _subscriptions.Dispose();
-        }
+        public void Dispose() => _subscriptions.Dispose();
 
-        public void SetTargetFramerate(int framerate)
-        {
-            Application.targetFrameRate = framerate;
-        }
+        public void SetTargetFramerate(int framerate) => Application.targetFrameRate = framerate;
 
         private void DisableVsync() => QualitySettings.vSyncCount = 0;
 
