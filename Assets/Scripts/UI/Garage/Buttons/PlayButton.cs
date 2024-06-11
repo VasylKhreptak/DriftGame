@@ -5,7 +5,7 @@ using Infrastructure.StateMachine.Main.Core;
 using UI.Buttons.Core;
 using Zenject;
 
-namespace UI.Buttons
+namespace UI.Garage.Buttons
 {
     public class PlayButton : BaseButton
     {

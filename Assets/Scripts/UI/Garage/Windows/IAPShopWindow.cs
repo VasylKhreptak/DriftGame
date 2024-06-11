@@ -1,6 +1,6 @@
 using UI.Windows.Core;
 
-namespace UI.Windows
+namespace UI.Garage.Windows
 {
     public class IAPShopWindow : BaseWindow { }
 }

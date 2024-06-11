@@ -4,7 +4,7 @@ using UI.Texts.Core;
 using UniRx;
 using Zenject;
 
-namespace UI.Texts
+namespace UI.Garage.Texts
 {
     public class CoinsText : ReactiveText
     {

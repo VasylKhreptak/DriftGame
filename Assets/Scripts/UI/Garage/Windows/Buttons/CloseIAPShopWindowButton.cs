@@ -1,7 +1,6 @@
 using UI.Buttons.Windows.Core;
-using UI.Windows;
 
-namespace UI.Buttons.Windows
+namespace UI.Garage.Windows.Buttons
 {
     public class CloseIAPShopWindowButton : CloseWindowButton<IAPShopWindow> { }
 }
