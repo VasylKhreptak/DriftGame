@@ -27,6 +27,8 @@ namespace UI.Garage.Buttons
             };
 
             _stateMachine.Enter<LoadSceneWithTransitionAsyncState, LoadSceneAsyncState.Payload>(payload);
+
+            Button.interactable = false;
         }
     }
 }

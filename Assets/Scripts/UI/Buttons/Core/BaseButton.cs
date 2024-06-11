@@ -8,6 +8,8 @@ namespace UI.Buttons.Core
         [Header("References")]
         [SerializeField] private Button _button;
 
+        protected Button Button => _button;
+
         #region MonoBehaivour
 
         private void OnValidate() => _button ??= GetComponent<Button>();
