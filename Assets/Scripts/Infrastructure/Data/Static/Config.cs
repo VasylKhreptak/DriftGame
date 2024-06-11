@@ -9,7 +9,6 @@ namespace Infrastructure.Data.Static
     {
         [Header("Scenes")]
         [SerializeField] private SceneField _bootstrapScene;
-        [SerializeField] private SceneField _mainMenuScene;
         [SerializeField] private SceneField _garageScene;
         [SerializeField] private SceneField _gameplayScene;
 
@@ -18,7 +17,6 @@ namespace Infrastructure.Data.Static
         [SerializeField] private LogType _buildLogType = LogType.Info;
 
         public SceneField BootstrapScene => _bootstrapScene;
-        public SceneField MainMenuScene => _mainMenuScene;
         public SceneField GarageScene => _garageScene;
         public SceneField GameplayScene => _gameplayScene;
 

@@ -21,7 +21,7 @@ using Zenject;
 
 namespace Infrastructure.Zenject.Installers.ProjectContext.Bootstrap
 {
-    public class BootstrapInstaller : MonoInstaller, IInitializable
+    public class zBootstrapInstaller : MonoInstaller, IInitializable
     {
         [Header("References")]
         [SerializeField] private GameObject _coroutineRunnerPrefab;
