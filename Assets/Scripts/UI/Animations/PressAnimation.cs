@@ -9,6 +9,9 @@ namespace UI.Animations
 {
     public class PressAnimation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
+        [Header("References")]
+        [SerializeField] private Transform _transform;
+
         private Preferences _preferences;
 
         [Inject]
@@ -18,10 +21,12 @@ namespace UI.Animations
 
         #region MonoBehaviour
 
+        private void OnValidate() => _transform ??= GetComponent<Transform>();
+
         private void OnDisable()
         {
             Stop();
-            transform.localScale = _preferences.DefaultScale;
+            _transform.localScale = _preferences.DefaultScale;
         }
 
         #endregion
@@ -33,7 +38,7 @@ namespace UI.Animations
         private void SetScaleSmooth(Vector3 scale)
         {
             Stop();
-            _tween = transform
+            _tween = _transform
                 .DOScale(scale, _preferences.Duration)
                 .SetEase(_preferences.Curve)
                 .Play();

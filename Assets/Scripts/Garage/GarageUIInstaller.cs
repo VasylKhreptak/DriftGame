@@ -1,6 +1,7 @@
 using UI.Garage.Windows;
-using UI.Windows;
+using UI.Garage.Windows.SelectLevel;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Garage
@@ -10,6 +11,7 @@ namespace Garage
         [Header("References")]
         [SerializeField] private SettingsWindow _settingsWindow;
         [SerializeField] private IAPShopWindow _iapShopWindow;
+        [FormerlySerializedAs("_selectedLevelWindow")] [SerializeField] private SelectLevelWindow _selectLevelWindow;
 
         #region MonoBehaviour
 
@@ -17,6 +19,7 @@ namespace Garage
         {
             _settingsWindow ??= FindObjectOfType<SettingsWindow>(true);
             _iapShopWindow ??= FindObjectOfType<IAPShopWindow>(true);
+            _selectLevelWindow ??= FindObjectOfType<SelectLevelWindow>(true);
         }
 
         #endregion
@@ -25,6 +28,7 @@ namespace Garage
         {
             Container.BindInstance(_settingsWindow).AsSingle();
             Container.BindInstance(_iapShopWindow).AsSingle();
+            Container.BindInstance(_selectLevelWindow).AsSingle();
         }
     }
 }
