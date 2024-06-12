@@ -2,8 +2,10 @@ using Gameplay.InputService;
 using Gameplay.InputService.Core;
 using Gameplay.StateMachine;
 using Gameplay.StateMachine.States;
+using Gameplay.StateMachine.States.Core;
 using Gameplay.StateMachine.States.Factory;
 using Gameplay.TimeManagement;
+using Infrastructure.StateMachine.Main.Core;
 using UnityEngine;
 using Zenject;
 
@@ -19,6 +21,7 @@ namespace Gameplay
             Container.Bind<LevelTimer>().AsSingle();
             BindInputService();
             BindStateMachine();
+            StartGameplay();
         }
 
         private void BindInputService()
@@ -41,9 +44,12 @@ namespace Gameplay
             Container.Bind<InitializeState>().AsSingle();
             Container.Bind<InitializeConnectionState>().AsSingle();
             Container.Bind<SpawnCarsState>().AsSingle();
-            Container.Bind<WarpUpState>().AsSingle();
+            Container.Bind<WarmUpState>().AsSingle();
             Container.Bind<StartRaceState>().AsSingle();
             Container.Bind<FinishRaceState>().AsSingle();
+            Container.Bind<FinalizeProgressState>().AsSingle();
         }
+
+        private void StartGameplay() => Container.Resolve<IStateMachine<IGameplayState>>().Enter<InitializeState>();
     }
 }

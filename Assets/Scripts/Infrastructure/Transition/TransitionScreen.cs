@@ -1,6 +1,7 @@
 ﻿using System;
 using DG.Tweening;
 using Infrastructure.Transition.Core;
+using UniRx;
 using UnityEngine;
 
 namespace Infrastructure.Transition
@@ -16,11 +17,11 @@ namespace Infrastructure.Transition
 
         private Tween _tween;
 
+        private readonly FloatReactiveProperty _fadeProgress = new FloatReactiveProperty(1f);
+
+        public IReadOnlyReactiveProperty<float> FadeProgress => _fadeProgress;
+
         #region MonoBehaviour
-
-        private void OnValidate() => _canvasGroup ??= GetComponent<CanvasGroup>();
-
-        private void Awake() => HideImmediately();
 
         private void OnDestroy() => _tween?.Kill();
 
@@ -29,40 +30,48 @@ namespace Infrastructure.Transition
         public void Show(Action onComplete = null)
         {
             gameObject.SetActive(true);
-            SetAlphaSmooth(1, onComplete);
+
+            _tween?.Kill();
+            _tween = _canvasGroup
+                .DOFade(1f, _duration)
+                .SetEase(_curve)
+                .OnUpdate(() => _fadeProgress.Value = 1 - _canvasGroup.alpha)
+                .OnComplete(() =>
+                {
+                    _fadeProgress.Value = 0f;
+                    onComplete?.Invoke();
+                })
+                .Play();
         }
 
         public void Hide(Action onComplete = null)
         {
-            SetAlphaSmooth(0, () =>
-            {
-                gameObject.SetActive(false);
-                onComplete?.Invoke();
-            });
+            _tween?.Kill();
+            _tween = _canvasGroup
+                .DOFade(0f, _duration)
+                .SetEase(_curve)
+                .OnUpdate(() => _fadeProgress.Value = 1 - _canvasGroup.alpha)
+                .OnComplete(() =>
+                {
+                    _fadeProgress.Value = 1;
+                    gameObject.SetActive(false);
+                    onComplete?.Invoke();
+                })
+                .Play();
         }
 
         public void ShowImmediately()
         {
             _tween?.Kill();
-            _canvasGroup.alpha = 1;
+            _canvasGroup.alpha = 1f;
             gameObject.SetActive(true);
         }
 
         public void HideImmediately()
         {
             _tween?.Kill();
-            _canvasGroup.alpha = 0;
+            _canvasGroup.alpha = 0f;
             gameObject.SetActive(false);
-        }
-
-        private void SetAlphaSmooth(float alpha, Action onComplete)
-        {
-            _tween?.Kill();
-            _tween = _canvasGroup
-                .DOFade(alpha, _duration)
-                .SetEase(_curve)
-                .OnComplete(() => onComplete?.Invoke())
-                .Play();
         }
     }
 }

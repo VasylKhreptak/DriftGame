@@ -16,9 +16,10 @@ namespace Gameplay.StateMachine.States.Factory
                 [typeof(InitializeState)] = _container.Resolve<InitializeState>,
                 [typeof(InitializeConnectionState)] = _container.Resolve<InitializeConnectionState>,
                 [typeof(SpawnCarsState)] = _container.Resolve<SpawnCarsState>,
-                [typeof(WarpUpState)] = _container.Resolve<WarpUpState>,
+                [typeof(WarmUpState)] = _container.Resolve<WarmUpState>,
                 [typeof(StartRaceState)] = _container.Resolve<StartRaceState>,
                 [typeof(FinishRaceState)] = _container.Resolve<FinishRaceState>,
+                [typeof(FinalizeProgressState)] = _container.Resolve<FinalizeProgressState>,
             };
     }
 }

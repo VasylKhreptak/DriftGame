@@ -42,6 +42,8 @@ namespace Plugins.Timer
             _duration = Mathf.Max(0, duration);
             _targetTime.Value = _duration;
 
+            UpdateValues();
+
             _onStarted.OnNext(Unit.Default);
 
             _coroutine = CoroutineRunner.Run(TimerRoutine());
@@ -58,10 +60,8 @@ namespace Plugins.Timer
                 }
 
                 _time.Value += UnityEngine.Time.deltaTime * _timeScale.Value;
-                _remainingTime.Value = _targetTime.Value - _time.Value;
-                _progress.Value = _time.Value / _targetTime.Value;
-                _remainingProgress.Value = 1f - _progress.Value;
-
+                UpdateValues();
+                
                 if ((Mathf.Sign(_timeScale.Value) >= 0 && _time.Value >= _targetTime.Value) ||
                     (Mathf.Sign(_timeScale.Value) < 0 && _time.Value <= 0f))
                 {
@@ -82,9 +82,9 @@ namespace Plugins.Timer
             _remainingProgress.Value = 0f;
             _time.Value = _targetTime.Value;
             _remainingTime.Value = 0f;
-            _onCompleted.OnNext(Unit.Default);
-
             Stop();
+            
+            _onCompleted.OnNext(Unit.Default);
         }
 
         public void Stop()
@@ -155,6 +155,13 @@ namespace Plugins.Timer
                 return;
 
             _targetTime.Value = Mathf.Max(0, targetTime);
+        }
+
+        private void UpdateValues()
+        {
+            _remainingTime.Value = _targetTime.Value - _time.Value;
+            _progress.Value = _time.Value / _targetTime.Value;
+            _remainingProgress.Value = 1f - _progress.Value;
         }
     }
 }
