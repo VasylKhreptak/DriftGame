@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class CarCamera : MonoBehaviour
+    public class CameraWrapper : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CinemachineVirtualCamera _cinemachineVirtualCamera;

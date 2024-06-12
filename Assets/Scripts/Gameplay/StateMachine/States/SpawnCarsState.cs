@@ -34,8 +34,8 @@ namespace Gameplay.StateMachine.States
 
             Transform spawnPoint = _carSpawnPoints[0];
             Transform car = _instantiator.InstantiatePrefab(_prefabs[Prefab.BaseCar], spawnPoint.position, spawnPoint.rotation, null).transform;
-            CarCamera carCamera = _instantiator.InstantiatePrefabForComponent<CarCamera>(_prefabs[Prefab.CarCamera]);
-            carCamera.SetTarget(car);
+            CameraWrapper camera = _instantiator.InstantiatePrefabForComponent<CameraWrapper>(_prefabs[Prefab.CarCamera]);
+            camera.SetTarget(car);
 
             _stateMachine.Enter<WarmUpState>();
         }
