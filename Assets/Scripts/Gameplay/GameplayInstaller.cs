@@ -15,10 +15,23 @@ namespace Gameplay
     {
         [Header("References")]
         [SerializeField] private ScreenInputService _screenInputService;
+        [SerializeField] private CarSpawnPoints _carSpawnPoints;
+
+        #region MonoBehaviour
+
+        private void OnValidate()
+        {
+            _screenInputService ??= FindObjectOfType<ScreenInputService>();
+            _carSpawnPoints ??= FindObjectOfType<CarSpawnPoints>();
+        }
+
+        #endregion
 
         public override void InstallBindings()
         {
             Container.Bind<LevelTimer>().AsSingle();
+            Container.BindInstance(_carSpawnPoints).AsSingle();
+
             BindInputService();
             BindStateMachine();
             StartGameplay();
