@@ -1,4 +1,8 @@
 ﻿namespace Infrastructure.Data.Static.Core
 {
-    public enum Prefab { }
+    public enum Prefab
+    {
+        BaseCar = 0,
+        CarCamera = 1,
+    }
 }

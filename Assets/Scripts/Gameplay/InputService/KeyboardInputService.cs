@@ -9,6 +9,8 @@ namespace Gameplay.InputService
 
         public float Vertical => Enabled ? Input.GetAxisRaw("Vertical") : 0;
 
+        public bool HandBrake => Enabled && Input.GetKey(KeyCode.Space);
+
         public bool Enabled { get; set; }
     }
 }

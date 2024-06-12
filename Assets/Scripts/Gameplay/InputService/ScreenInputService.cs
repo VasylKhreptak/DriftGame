@@ -13,16 +13,19 @@ namespace Gameplay.InputService
         [SerializeField] private Button _rightButton;
         [SerializeField] private Button _upButton;
         [SerializeField] private Button _downButton;
+        [SerializeField] private Button _handBrakeButton;
 
         private bool _leftPressed;
         private bool _rightPressed;
         private bool _upPressed;
         private bool _downPressed;
+        private bool _handBrakePressed;
 
         private readonly CompositeDisposable _subscriptions = new CompositeDisposable();
 
         public float Horizontal => Enabled ? (_rightPressed ? 1 : 0) - (_leftPressed ? 1 : 0) : 0;
         public float Vertical => Enabled ? (_upPressed ? 1 : 0) - (_downPressed ? 1 : 0) : 0;
+        public bool HandBrake => Enabled && _handBrakePressed;
         public bool Enabled { get; set; }
 
         #region MonoBehaviour
@@ -40,6 +43,9 @@ namespace Gameplay.InputService
 
             _downButton.OnPointerDownAsObservable().Subscribe(_ => _downPressed = true).AddTo(_subscriptions);
             _downButton.OnPointerUpAsObservable().Subscribe(_ => _downPressed = false).AddTo(_subscriptions);
+
+            _handBrakeButton.OnPointerDownAsObservable().Subscribe(_ => _handBrakePressed = true).AddTo(_subscriptions);
+            _handBrakeButton.OnPointerUpAsObservable().Subscribe(_ => _handBrakePressed = false).AddTo(_subscriptions);
         }
 
         private void OnDisable()
