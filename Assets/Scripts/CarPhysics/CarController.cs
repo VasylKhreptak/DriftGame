@@ -91,9 +91,8 @@ namespace CarPhysics
                 return;
             }
 
-            if ((_moveSign == 1 && _inputService.Vertical < 0) ||
-                (_moveSign == -1 && _inputService.Vertical > 0))
-                wheel.Collider.brakeTorque = _brakeTorque * _inputService.Vertical;
+            if ((_moveSign == 1 && _inputService.Vertical < 0) || (_moveSign == -1 && _inputService.Vertical > 0))
+                wheel.Collider.brakeTorque = _brakeTorque * Mathf.Abs(_inputService.Vertical);
             else if (_moveSign == 0 || _inputService.Vertical == 0)
                 wheel.Collider.brakeTorque = 0;
         }
