@@ -36,7 +36,7 @@ namespace Gameplay.StateMachine.States
             _logService.Log("StartRaceState");
 
             _inputService.Enabled = true;
-            
+
             _levelTimer.Start(_balance.RaceDuration * 1000);
             _timerSubscription = _levelTimer.OnCompleted.Subscribe(_ => OnTimerElapsed());
         }

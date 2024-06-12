@@ -11,7 +11,8 @@ namespace Garage
         [Header("References")]
         [SerializeField] private SettingsWindow _settingsWindow;
         [SerializeField] private IAPShopWindow _iapShopWindow;
-        [FormerlySerializedAs("_selectedLevelWindow")] [SerializeField] private SelectLevelWindow _selectLevelWindow;
+        [FormerlySerializedAs("_selectedLevelWindow")] [SerializeField]
+        private SelectLevelWindow _selectLevelWindow;
 
         #region MonoBehaviour
 

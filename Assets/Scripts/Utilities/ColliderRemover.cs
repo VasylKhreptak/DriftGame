@@ -9,7 +9,9 @@ namespace Utilities
         private void Remove()
         {
             foreach (Collider collider in GetComponentsInChildren<Collider>(true))
+            {
                 DestroyImmediate(collider);
+            }
 
             DestroyImmediate(this);
         }

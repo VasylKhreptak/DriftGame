@@ -22,7 +22,7 @@ namespace Gameplay.StateMachine.States
         public void Enter()
         {
             _logService.Log("InitializeState");
-            
+
             _inputService.Enabled = false;
             _stateMachine.Enter<InitializeConnectionState>();
         }

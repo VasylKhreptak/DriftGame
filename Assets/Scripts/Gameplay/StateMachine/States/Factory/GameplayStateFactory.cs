@@ -19,7 +19,7 @@ namespace Gameplay.StateMachine.States.Factory
                 [typeof(WarmUpState)] = _container.Resolve<WarmUpState>,
                 [typeof(StartRaceState)] = _container.Resolve<StartRaceState>,
                 [typeof(FinishRaceState)] = _container.Resolve<FinishRaceState>,
-                [typeof(FinalizeProgressState)] = _container.Resolve<FinalizeProgressState>,
+                [typeof(FinalizeProgressState)] = _container.Resolve<FinalizeProgressState>
             };
     }
 }

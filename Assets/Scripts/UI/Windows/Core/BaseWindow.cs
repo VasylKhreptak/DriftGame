@@ -1,4 +1,3 @@
-using System;
 using Infrastructure.Graphics.UI.Windows.Core;
 using Plugins.Animations;
 using Plugins.Animations.Core;

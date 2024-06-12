@@ -23,7 +23,7 @@ namespace UI.Garage.Buttons
         {
             LoadSceneAsyncState.Payload payload = new LoadSceneAsyncState.Payload
             {
-                SceneName = _staticDataService.Config.GameplayScene.Name,
+                SceneName = _staticDataService.Config.GameplayScene.Name
             };
 
             _stateMachine.Enter<LoadSceneWithTransitionAsyncState, LoadSceneAsyncState.Payload>(payload);

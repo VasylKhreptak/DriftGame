@@ -16,7 +16,7 @@ namespace CarPhysics
 
         [Header("Preferences")]
         [SerializeField] private float _maxSteerAngle = 30f;
-        [SerializeField, Range(0, 1f)] private float _steerSpeed = 0.5f;
+        [SerializeField] [Range(0, 1f)] private float _steerSpeed = 0.5f;
         [SerializeField] private float _motorTorque = 1000f;
         [SerializeField] private float _brakeTorque = 3000f;
         [SerializeField] private float _handBrakeTorque = 10000f;
@@ -77,9 +77,7 @@ namespace CarPhysics
                 (_moveSign == -1 && _inputService.Vertical < 0) ||
                 _moveSign == 0 ||
                 _inputService.Vertical == 0)
-            {
                 wheel.WheelCollider.motorTorque = _motorTorque * _inputService.Vertical;
-            }
         }
 
         private void HandleBrake(Wheel wheel)
@@ -95,13 +93,9 @@ namespace CarPhysics
 
             if ((_moveSign == 1 && _inputService.Vertical < 0) ||
                 (_moveSign == -1 && _inputService.Vertical > 0))
-            {
                 wheel.WheelCollider.brakeTorque = _brakeTorque * _inputService.Vertical;
-            }
             else if (_moveSign == 0 || _inputService.Vertical == 0)
-            {
                 wheel.WheelCollider.brakeTorque = 0;
-            }
         }
 
         private void UpdateTransform(Wheel wheel)

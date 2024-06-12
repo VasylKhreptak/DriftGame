@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks.Triggers;
 using Infrastructure.Graphics.UI.Windows.Core;
 using UI.Buttons.Core;
 using Zenject;

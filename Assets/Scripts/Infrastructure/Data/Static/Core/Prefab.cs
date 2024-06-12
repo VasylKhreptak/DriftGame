@@ -3,6 +3,6 @@
     public enum Prefab
     {
         BaseCar = 0,
-        CarCamera = 1,
+        CarCamera = 1
     }
 }

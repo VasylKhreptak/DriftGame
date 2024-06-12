@@ -25,7 +25,7 @@ namespace Infrastructure.Data.Static
         public SceneField GameplayScene => _gameplayScene;
 
         public LogType LogType => Application.isEditor ? _editorLogType : _buildLogType;
-        
+
         public PressAnimation.Preferences PressAnimationPreferences => _pressAnimationPreferences;
     }
 }
