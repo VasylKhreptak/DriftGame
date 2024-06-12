@@ -4059,25 +4059,25 @@ MonoBehaviour:
   _brakeTorque: 6000
   _handBrakeTorque: 10000
   _wheels:
-  - WheelCollider: {fileID: 1578474429064883221}
+  - Collider: {fileID: 1578474429064883221}
     Transform: {fileID: 3967354914504061948}
     CanSteer: 1
     CanDrive: 0
     CanBrake: 1
     CanHandBrake: 0
-  - WheelCollider: {fileID: 9129058806218228396}
+  - Collider: {fileID: 9129058806218228396}
     Transform: {fileID: 357556839126830459}
     CanSteer: 1
     CanDrive: 0
     CanBrake: 1
     CanHandBrake: 0
-  - WheelCollider: {fileID: 2436868522944688904}
+  - Collider: {fileID: 2436868522944688904}
     Transform: {fileID: 4411912556602900907}
     CanSteer: 0
     CanDrive: 1
     CanBrake: 1
     CanHandBrake: 1
-  - WheelCollider: {fileID: 4943361753437897754}
+  - Collider: {fileID: 4943361753437897754}
     Transform: {fileID: 1515659538402999464}
     CanSteer: 0
     CanDrive: 1

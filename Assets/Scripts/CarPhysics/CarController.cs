@@ -34,7 +34,7 @@ namespace CarPhysics
 
         private float _currentSteerAngle;
 
-        [ShowInInspector] private int _moveSign;
+        [ShowInInspector, ReadOnly] private int _moveSign;
 
         #region MonoBehaviour
 
@@ -77,7 +77,7 @@ namespace CarPhysics
                 (_moveSign == -1 && _inputService.Vertical < 0) ||
                 _moveSign == 0 ||
                 _inputService.Vertical == 0)
-                wheel.WheelCollider.motorTorque = _motorTorque * _inputService.Vertical;
+                wheel.Collider.motorTorque = _motorTorque * _inputService.Vertical;
         }
 
         private void HandleBrake(Wheel wheel)
@@ -87,20 +87,20 @@ namespace CarPhysics
 
             if (_inputService.HandBrake && wheel.CanHandBrake)
             {
-                wheel.WheelCollider.brakeTorque = _handBrakeTorque;
+                wheel.Collider.brakeTorque = _handBrakeTorque;
                 return;
             }
 
             if ((_moveSign == 1 && _inputService.Vertical < 0) ||
                 (_moveSign == -1 && _inputService.Vertical > 0))
-                wheel.WheelCollider.brakeTorque = _brakeTorque * _inputService.Vertical;
+                wheel.Collider.brakeTorque = _brakeTorque * _inputService.Vertical;
             else if (_moveSign == 0 || _inputService.Vertical == 0)
-                wheel.WheelCollider.brakeTorque = 0;
+                wheel.Collider.brakeTorque = 0;
         }
 
         private void UpdateTransform(Wheel wheel)
         {
-            wheel.WheelCollider.GetWorldPose(out Vector3 position, out Quaternion rotation);
+            wheel.Collider.GetWorldPose(out Vector3 position, out Quaternion rotation);
             wheel.Transform.position = position;
             wheel.Transform.rotation = rotation;
         }
@@ -112,7 +112,7 @@ namespace CarPhysics
 
             _currentSteerAngle = Mathf.Lerp(_currentSteerAngle, _maxSteerAngle * _inputService.Horizontal, _steerSpeed);
 
-            wheel.WheelCollider.steerAngle = _currentSteerAngle;
+            wheel.Collider.steerAngle = _currentSteerAngle;
         }
     }
 }

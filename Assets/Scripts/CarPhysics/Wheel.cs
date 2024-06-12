@@ -7,7 +7,7 @@ namespace CarPhysics
     [Serializable]
     public class Wheel
     {
-        public WheelCollider WheelCollider;
+        public WheelCollider Collider;
         public Transform Transform;
         public bool CanSteer;
         public bool CanDrive;
