@@ -31,10 +31,10 @@ namespace UI.Gameplay.Windows.RaceFinished.Buttons
 
         #region MonoBehaviour
 
-        protected override void OnDisable()
+        private void OnDestroy()
         {
             base.OnDisable();
-            
+
             _advertisementService.OnRewarded -= DoubleScore;
         }
 
