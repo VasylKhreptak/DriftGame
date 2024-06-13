@@ -1942,7 +1942,7 @@ MonoBehaviour:
   - {fileID: 2436868522944688904}
   - {fileID: 4943361753437897754}
   _checkInterval: 0.2
-  _sidewaysSlipThreshold: 0.5
+  _sidewaysSlipThreshold: 0.35
 --- !u!1 &4276517899796281480
 GameObject:
   m_ObjectHideFlags: 0
@@ -4169,7 +4169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 6442378983123636449}
-  _driftObserver: {fileID: 0}
+  _driftObserver: {fileID: 4489049527246955565}
 --- !u!114 &6442378983123636449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4186,20 +4186,20 @@ MonoBehaviour:
   _COF: {fileID: 1647774568706001375}
   _maxSteerAngle: 30
   _steerSpeed: 0.1
-  _motorTorque: 3000
-  _brakeTorque: 1000
-  _handBrakeTorque: 2000
+  _motorTorque: 1500
+  _brakeTorque: 2500
+  _handBrakeTorque: 4500
   _wheels:
   - Collider: {fileID: 1578474429064883221}
     Transform: {fileID: 3967354914504061948}
     CanSteer: 1
-    CanDrive: 0
+    CanDrive: 1
     CanBrake: 1
     CanHandBrake: 0
   - Collider: {fileID: 9129058806218228396}
     Transform: {fileID: 357556839126830459}
     CanSteer: 1
-    CanDrive: 0
+    CanDrive: 1
     CanBrake: 1
     CanHandBrake: 0
   - Collider: {fileID: 2436868522944688904}
