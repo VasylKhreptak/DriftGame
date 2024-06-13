@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UniRx;
 using UnityEngine;
 
-namespace CarPhysics
+namespace Gameplay.Vehicles
 {
     public class DriftObserver : MonoBehaviour
     {

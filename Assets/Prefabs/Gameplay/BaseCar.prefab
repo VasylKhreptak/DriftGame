@@ -198,6 +198,55 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1167043125281611993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264194314074258102}
+  - component: {fileID: 1490261757180442210}
+  m_Layer: 3
+  m_Name: RigidbodyDecelerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1264194314074258102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167043125281611993}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4527090592258215920}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1490261757180442210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167043125281611993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d6222a63c640f6b0f270f68b857827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 1148426174304213891}
+  _defaultDrag: 0
+  _defaultAngularDrag: 0.05
+  _targetDrag: 2
+  _targetAngularDrag: 2
 --- !u!1 &1210870291328093241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,6 +1502,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1979081317768787522}
+  - {fileID: 1264194314074258102}
   m_Father: {fileID: 7940189476485559580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3588550195073939517
@@ -4170,6 +4220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 6442378983123636449}
   _driftObserver: {fileID: 4489049527246955565}
+  _rigidbodyDecelerator: {fileID: 1490261757180442210}
 --- !u!114 &6442378983123636449
 MonoBehaviour:
   m_ObjectHideFlags: 0
