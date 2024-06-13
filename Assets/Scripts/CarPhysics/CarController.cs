@@ -36,6 +36,9 @@ namespace CarPhysics
 
         [ShowInInspector, ReadOnly] private int _moveSign;
 
+        private Vector3 _targetWheelPosition;
+        private Quaternion _targetWheelRotation;
+
         #region MonoBehaviour
 
         private void OnValidate() => _rigidbody ??= GetComponent<Rigidbody>();
@@ -99,9 +102,9 @@ namespace CarPhysics
 
         private void UpdateTransform(Wheel wheel)
         {
-            wheel.Collider.GetWorldPose(out Vector3 position, out Quaternion rotation);
-            wheel.Transform.position = position;
-            wheel.Transform.rotation = rotation;
+            wheel.Collider.GetWorldPose(out _targetWheelPosition, out _targetWheelRotation);
+            wheel.Transform.position = _targetWheelPosition;
+            wheel.Transform.rotation = _targetWheelRotation;
         }
 
         private void HandleSteering(Wheel wheel)

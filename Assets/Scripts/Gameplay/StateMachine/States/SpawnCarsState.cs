@@ -1,3 +1,5 @@
+using CarPhysics;
+using Data;
 using Gameplay.StateMachine.States.Core;
 using Infrastructure.Data.Static;
 using Infrastructure.Data.Static.Core;
@@ -17,14 +19,16 @@ namespace Gameplay.StateMachine.States
         private readonly Prefabs _prefabs;
         private readonly IInstantiator _instantiator;
         private readonly CarSpawnPoints _carSpawnPoints;
+        private readonly ReactiveHolder<Car> _carReactiveHolder;
 
         public SpawnCarsState(IStateMachine<IGameplayState> stateMachine, ILogService logService, IStaticDataService staticDataService,
-            IInstantiator instantiator, CarSpawnPoints carSpawnPoints)
+            IInstantiator instantiator, CarSpawnPoints carSpawnPoints, ReactiveHolder<Car> carReactiveHolder)
         {
             _stateMachine = stateMachine;
             _logService = logService;
             _instantiator = instantiator;
             _carSpawnPoints = carSpawnPoints;
+            _carReactiveHolder = carReactiveHolder;
             _prefabs = staticDataService.Prefabs;
         }
 
@@ -32,12 +36,18 @@ namespace Gameplay.StateMachine.States
         {
             _logService.Log("SpawnCarsState");
 
-            Transform spawnPoint = _carSpawnPoints[0];
-            Transform car = _instantiator.InstantiatePrefab(_prefabs[Prefab.BaseCar], spawnPoint.position, spawnPoint.rotation, null).transform;
-            CameraWrapper camera = _instantiator.InstantiatePrefabForComponent<CameraWrapper>(_prefabs[Prefab.CarCamera]);
-            camera.SetTarget(car);
+            SpawnCar();
 
             _stateMachine.Enter<WarmUpState>();
+        }
+
+        private void SpawnCar()
+        {
+            Transform spawnPoint = _carSpawnPoints[0];
+            Car car = _instantiator.InstantiatePrefabForComponent<Car>(_prefabs[Prefab.BaseCar], spawnPoint.position, spawnPoint.rotation, null);
+            CameraWrapper camera = _instantiator.InstantiatePrefabForComponent<CameraWrapper>(_prefabs[Prefab.CarCamera]);
+            camera.SetTarget(car.transform);
+            _carReactiveHolder.Property.Value = car;
         }
     }
 }

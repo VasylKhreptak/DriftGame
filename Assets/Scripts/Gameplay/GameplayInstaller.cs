@@ -1,3 +1,6 @@
+using CarPhysics;
+using Data;
+using Gameplay.Data;
 using Gameplay.InputService;
 using Gameplay.InputService.Core;
 using Gameplay.StateMachine;
@@ -31,6 +34,10 @@ namespace Gameplay
         {
             Container.Bind<LevelTimer>().AsSingle();
             Container.BindInstance(_carSpawnPoints).AsSingle();
+            Container.Bind<ReactiveHolder<Car>>().AsSingle();
+            Container.Bind<GameplayData>().AsSingle();
+
+            Container.BindInterfacesTo<ScoreCalculator>().AsSingle();
 
             BindInputService();
             BindStateMachine();
