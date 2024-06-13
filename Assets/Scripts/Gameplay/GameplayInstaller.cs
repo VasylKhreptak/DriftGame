@@ -1,5 +1,6 @@
 using Data;
 using Gameplay.Data;
+using Gameplay.DebuggerOptions;
 using Gameplay.InputService;
 using Gameplay.InputService.Core;
 using Gameplay.SpawnPoints;
@@ -42,6 +43,7 @@ namespace Gameplay
 
             BindInputService();
             BindStateMachine();
+            BindDebugOptionsContainer();
             StartGameplay();
         }
 
@@ -68,8 +70,10 @@ namespace Gameplay
             Container.Bind<WarmUpState>().AsSingle();
             Container.Bind<StartRaceState>().AsSingle();
             Container.Bind<FinishRaceState>().AsSingle();
-            Container.Bind<FinalizeProgressState>().AsSingle();
+            Container.Bind<FinalizeProgressAndLoadGarageState>().AsSingle();
         }
+
+        private void BindDebugOptionsContainer() => Container.BindInterfacesAndSelfTo<GameplayOptions>().AsSingle();
 
         private void StartGameplay() => Container.Resolve<IStateMachine<IGameplayState>>().Enter<InitializeState>();
     }
