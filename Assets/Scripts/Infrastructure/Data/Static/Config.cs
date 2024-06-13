@@ -1,3 +1,4 @@
+using System;
 using Udar.SceneManager;
 using UI.Animations;
 using UnityEngine;
@@ -17,6 +18,10 @@ namespace Infrastructure.Data.Static
         [SerializeField] private LogType _editorLogType = LogType.Info;
         [SerializeField] private LogType _buildLogType = LogType.Info;
 
+        [Header("Application")]
+        [SerializeField] private string _androidAppKey = "1ecb53875";
+        [SerializeField] private string _iosAppKey = String.Empty;
+
         [Header("Animations")]
         [SerializeField] private PressAnimation.Preferences _pressAnimationPreferences;
 
@@ -27,5 +32,9 @@ namespace Infrastructure.Data.Static
         public LogType LogType => Application.isEditor ? _editorLogType : _buildLogType;
 
         public PressAnimation.Preferences PressAnimationPreferences => _pressAnimationPreferences;
+
+        public string AppKey =>
+            Application.platform == RuntimePlatform.Android ? _androidAppKey :
+            Application.platform == RuntimePlatform.IPhonePlayer ? _iosAppKey : "unexpected_platform";
     }
 }

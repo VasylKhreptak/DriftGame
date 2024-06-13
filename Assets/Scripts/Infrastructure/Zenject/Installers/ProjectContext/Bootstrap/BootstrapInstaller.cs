@@ -3,6 +3,7 @@ using Infrastructure.Coroutines.Runner;
 using Infrastructure.Data.SaveLoad;
 using Infrastructure.Observers.Screen;
 using Infrastructure.SceneManagement;
+using Infrastructure.Services.Advertisement;
 using Infrastructure.Services.Framerate;
 using Infrastructure.Services.ID;
 using Infrastructure.Services.Log;
@@ -10,6 +11,7 @@ using Infrastructure.Services.PersistentData;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.Core;
+using Infrastructure.Services.ToastMessage;
 using Infrastructure.StateMachine.Game;
 using Infrastructure.StateMachine.Game.Factory;
 using Infrastructure.StateMachine.Game.States;
@@ -58,6 +60,8 @@ namespace Infrastructure.Zenject.Installers.ProjectContext.Bootstrap
             Container.BindInterfacesTo<PersistentDataService>().AsSingle();
             Container.BindInterfacesTo<FramerateService>().AsSingle();
             Container.BindInterfacesTo<SaveLoadService>().AsSingle();
+            Container.BindInterfacesTo<AdvertisementService>().AsSingle();
+            Container.BindInterfacesTo<ToastMessageService>().AsSingle();
         }
 
         private void BindScreenObserver() => Container.BindInterfacesAndSelfTo<ScreenObserver>().AsSingle();
@@ -77,7 +81,9 @@ namespace Infrastructure.Zenject.Installers.ProjectContext.Bootstrap
             Container.Bind<BootstrapState>().AsSingle();
             Container.Bind<LoadDataState>().AsSingle();
             Container.Bind<SetupApplicationState>().AsSingle();
+            Container.Bind<BootstrapFirebaseState>().AsSingle();
             Container.Bind<BootstrapAnalyticsState>().AsSingle();
+            Container.Bind<BootstrapAdvertisementsState>().AsSingle();
             Container.Bind<FinalizeBootstrapState>().AsSingle();
             Container.Bind<GameLoopState>().AsSingle();
 

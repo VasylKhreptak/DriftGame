@@ -25,10 +25,12 @@ MonoBehaviour:
   _gameplayScene:
     _sceneOB: {fileID: 102900000, guid: e75ace5a42cf5734c8374c8bda57d3ce, type: 3}
     _name: Gameplay
-    _path: 
-    _buildIndex: -1
+    _path: Assets/Scenes/Gameplay.unity
+    _buildIndex: 2
   _editorLogType: -1
-  _buildLogType: 0
+  _buildLogType: 7
+  _androidAppKey: 1ecb53875
+  _iosAppKey: 
   _pressAnimationPreferences:
     _defaultScale: {x: 1, y: 1, z: 1}
     _pressedScale: {x: 0.9, y: 0.9, z: 0.9}

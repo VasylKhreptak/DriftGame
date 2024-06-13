@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "504973688242",
+    "project_id": "driftgame-ff030",
+    "storage_bucket": "driftgame-ff030.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504973688242:android:b62efddea68d6df19738ab",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.DriftGame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbpo_bj5taCIe8Fsj3LxuHmUPHcD3bFSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

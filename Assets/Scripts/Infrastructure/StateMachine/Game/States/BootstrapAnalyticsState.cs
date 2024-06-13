@@ -24,7 +24,7 @@ namespace Infrastructure.StateMachine.Game.States
         {
             _logService.Log("BootstrapAnalyticsState");
             _persistentDataService.Data.AnalyticsData.SessionsCount++;
-            _gameStateMachine.Enter<FinalizeBootstrapState>();
+            _gameStateMachine.Enter<BootstrapAdvertisementsState>();
         }
     }
 }
