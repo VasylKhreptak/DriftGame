@@ -58,18 +58,20 @@ namespace Gameplay
             _gameplayData.Score.Add(_preferences.StartScore);
 
             _scoreSubscription = Observable
-                .Interval(TimeSpan.FromSeconds(1))
-                .Subscribe(_ => _gameplayData.Score.Add(_preferences.ScorePerSecond));
+                .Interval(TimeSpan.FromSeconds(_preferences.Interval))
+                .Subscribe(_ => _gameplayData.Score.Add(_preferences.ScorePerInterval));
         }
 
         [Serializable]
         public class Preferences
         {
             [SerializeField] private int _startScore = 10;
-            [SerializeField] private int _scorePerSecond = 50;
+            [SerializeField] private float _interval = 0.1f;
+            [SerializeField] private int _scorePerInterval = 5;
 
             public int StartScore => _startScore;
-            public int ScorePerSecond => _scorePerSecond;
+            public float Interval => _interval;
+            public int ScorePerInterval => _scorePerInterval;
         }
     }
 }
