@@ -16,6 +16,6 @@ namespace UI.Garage.Texts
             _persistentData = persistentDataService;
         }
 
-        protected override IObservable<string> GetObservable() => _persistentData.Data.PlayerData.Coins.Amount.Select(x => x.ToString());
+        protected override IObservable<string> GetObservable() => _persistentData.Data.PlayerData.Resources.Coins.Amount.Select(x => x.ToString());
     }
 }

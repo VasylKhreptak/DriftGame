@@ -37,7 +37,7 @@ namespace Gameplay.StateMachine.States
             LoadGarage();
         }
 
-        private void RegisterScore() => _persistentDataService.Data.PlayerData.Coins.Add(_gameplayData.Score.Amount.Value);
+        private void RegisterScore() => _persistentDataService.Data.PlayerData.Resources.Coins.Add(_gameplayData.Score.Amount.Value);
 
         private void LoadGarage()
         {
