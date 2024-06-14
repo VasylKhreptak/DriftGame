@@ -9,6 +9,7 @@ namespace Gameplay.Vehicles
     {
         public WheelCollider Collider;
         public Transform Transform;
+        public bool InverseRotation;
         public bool CanSteer;
         public bool CanDrive;
         public bool CanBrake;

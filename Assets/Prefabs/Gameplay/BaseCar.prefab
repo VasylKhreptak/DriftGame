@@ -4243,24 +4243,28 @@ MonoBehaviour:
   _wheels:
   - Collider: {fileID: 1578474429064883221}
     Transform: {fileID: 3967354914504061948}
+    InverseRotation: 0
     CanSteer: 1
     CanDrive: 1
     CanBrake: 1
     CanHandBrake: 0
   - Collider: {fileID: 9129058806218228396}
     Transform: {fileID: 357556839126830459}
+    InverseRotation: 1
     CanSteer: 1
     CanDrive: 1
     CanBrake: 1
     CanHandBrake: 0
   - Collider: {fileID: 2436868522944688904}
     Transform: {fileID: 4411912556602900907}
+    InverseRotation: 0
     CanSteer: 0
     CanDrive: 1
     CanBrake: 1
     CanHandBrake: 1
   - Collider: {fileID: 4943361753437897754}
     Transform: {fileID: 1515659538402999464}
+    InverseRotation: 1
     CanSteer: 0
     CanDrive: 1
     CanBrake: 1

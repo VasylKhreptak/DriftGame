@@ -104,7 +104,7 @@ namespace Gameplay.Vehicles
         {
             wheel.Collider.GetWorldPose(out _targetWheelPosition, out _targetWheelRotation);
             wheel.Transform.position = _targetWheelPosition;
-            wheel.Transform.rotation = _targetWheelRotation;
+            wheel.Transform.rotation = wheel.InverseRotation ? _targetWheelRotation * Quaternion.Euler(0, 180, 0) : _targetWheelRotation;
         }
 
         private void HandleSteering(Wheel wheel)
