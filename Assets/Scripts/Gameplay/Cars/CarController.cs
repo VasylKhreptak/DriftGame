@@ -43,16 +43,25 @@ namespace Gameplay.Cars
 
         private void OnValidate() => _rigidbody ??= GetComponent<Rigidbody>();
 
-        private void Awake() => _rigidbody.centerOfMass = _COF.localPosition;
-
-        private void OnEnable()
+        private void Awake()
         {
+            _rigidbody.centerOfMass = _COF.localPosition;
+
             if (_inputService == null)
-                enabled = false;
+                foreach (var wheel in _wheels)
+                    wheel.Collider.brakeTorque = float.MaxValue;
         }
 
         private void FixedUpdate()
         {
+            if (_inputService == null)
+            {
+                foreach (var wheel in _wheels)
+                    UpdateTransform(wheel);
+
+                return;
+            }
+
             UpdateMoveSignProperty();
 
             foreach (Wheel wheel in _wheels)
