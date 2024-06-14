@@ -59,3 +59,12 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  _backgroundMusicPreferences:
+    _urls:
+    - https://firebasestorage.googleapis.com/v0/b/ghost-rider-1c1c4.appspot.com/o/Music%2F1997.mp3?alt=media&token=ba4cba12-4d6c-44b0-99b2-64743f8f54fb
+    - https://firebasestorage.googleapis.com/v0/b/ghost-rider-1c1c4.appspot.com/o/Music%2F666_Volume.mp3?alt=media&token=2887080d-2064-4922-9a65-4c0742a3e8f3
+    - https://firebasestorage.googleapis.com/v0/b/ghost-rider-1c1c4.appspot.com/o/Music%2F6IXSPEED.mp3?alt=media&token=85b5055d-8ed0-45ff-aed2-a982976d615d
+    - https://firebasestorage.googleapis.com/v0/b/ghost-rider-1c1c4.appspot.com/o/Music%2F9mm.mp3?alt=media&token=73ffb9d8-49a7-4c8e-85c3-96b88293af27
+    - https://firebasestorage.googleapis.com/v0/b/ghost-rider-1c1c4.appspot.com/o/Music%2FADRENALIN.mp3?alt=media&token=1556cc65-72b8-4925-9cc1-70245cdb6df8
+    - https://firebasestorage.googleapis.com/v0/b/ghost-rider-1c1c4.appspot.com/o/Music%2FAFTERLIFE.mp3?alt=media&token=24802b09-5e31-4659-b0f6-a6d4c3cf8e71
+    - https://firebasestorage.googleapis.com/v0/b/ghost-rider-1c1c4.appspot.com/o/Music%2FALCHEMY.mp3?alt=media&token=34eeee62-8e1b-4ce8-943b-1c2e4514efe8

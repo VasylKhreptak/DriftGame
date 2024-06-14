@@ -1,7 +1,6 @@
 using UI.Garage.Windows;
 using UI.Garage.Windows.SelectLevel;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Garage
@@ -11,8 +10,7 @@ namespace Garage
         [Header("References")]
         [SerializeField] private SettingsWindow _settingsWindow;
         [SerializeField] private IAPShopWindow _iapShopWindow;
-        [FormerlySerializedAs("_selectedLevelWindow")] [SerializeField]
-        private SelectLevelWindow _selectLevelWindow;
+        [SerializeField] private SelectLevelWindow _selectLevelWindow;
 
         #region MonoBehaviour
 

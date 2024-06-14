@@ -18,6 +18,7 @@ using Infrastructure.StateMachine.Game.States;
 using Infrastructure.StateMachine.Game.States.Core;
 using Infrastructure.StateMachine.Main.Core;
 using Infrastructure.Transition;
+using Music;
 using UnityEngine;
 using Zenject;
 
@@ -62,6 +63,8 @@ namespace Infrastructure.Zenject.Installers.ProjectContext.Bootstrap
             Container.BindInterfacesTo<SaveLoadService>().AsSingle();
             Container.BindInterfacesTo<AdvertisementService>().AsSingle();
             Container.BindInterfacesTo<ToastMessageService>().AsSingle();
+            Container.Bind<BackgroundMusicProvider>().AsSingle();
+            Container.Bind<BackgroundMusicPlayer>().AsSingle();
         }
 
         private void BindScreenObserver() => Container.BindInterfacesAndSelfTo<ScreenObserver>().AsSingle();

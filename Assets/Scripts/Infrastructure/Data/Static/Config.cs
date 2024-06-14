@@ -1,4 +1,5 @@
 using System;
+using Music;
 using Udar.SceneManager;
 using UI.Animations;
 using UnityEngine;
@@ -25,6 +26,9 @@ namespace Infrastructure.Data.Static
         [Header("Animations")]
         [SerializeField] private PressAnimation.Preferences _pressAnimationPreferences;
 
+        [Header("Music")]
+        [SerializeField] private BackgroundMusicProvider.Preferences _backgroundMusicPreferences;
+
         public SceneField BootstrapScene => _bootstrapScene;
         public SceneField GarageScene => _garageScene;
         public SceneField GameplayScene => _gameplayScene;
@@ -36,5 +40,7 @@ namespace Infrastructure.Data.Static
         public string AppKey =>
             Application.platform == RuntimePlatform.Android ? _androidAppKey :
             Application.platform == RuntimePlatform.IPhonePlayer ? _iosAppKey : "unexpected_platform";
+
+        public BackgroundMusicProvider.Preferences BackgroundMusicPreferences => _backgroundMusicPreferences;
     }
 }
