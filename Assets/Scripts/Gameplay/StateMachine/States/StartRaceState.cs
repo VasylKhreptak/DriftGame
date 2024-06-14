@@ -1,4 +1,5 @@
 using System;
+using GameAnalyticsSDK;
 using Gameplay.InputService.Core;
 using Gameplay.StateMachine.States.Core;
 using Gameplay.TimeManagement;
@@ -37,6 +38,8 @@ namespace Gameplay.StateMachine.States
 
             _inputService.Enabled = true;
 
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "StartRace");
+
             _levelTimer.Start(_balance.RaceDuration);
             _timerSubscription = _levelTimer.OnCompleted.Subscribe(_ => OnTimerElapsed());
         }
@@ -47,6 +50,10 @@ namespace Gameplay.StateMachine.States
             _levelTimer.Reset();
         }
 
-        private void OnTimerElapsed() => _stateMachine.Enter<FinishRaceState>();
+        private void OnTimerElapsed()
+        {
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "StartRace");
+            _stateMachine.Enter<FinishRaceState>();
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using GameAnalyticsSDK;
 using Gameplay.StateMachine.States.Core;
 using Gameplay.TimeManagement;
 using Infrastructure.Data.Static;
@@ -36,6 +37,8 @@ namespace Gameplay.StateMachine.States
         {
             _logService.Log("WarmUpState");
 
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "WarmUp");
+
             InitializeTimer();
             WaitUntilScreenFade();
         }
@@ -67,6 +70,10 @@ namespace Gameplay.StateMachine.States
             _timerSubscription = _levelTimer.OnCompleted.Subscribe(_ => OnTimerElapsed());
         }
 
-        private void OnTimerElapsed() => _stateMachine.Enter<StartRaceState>();
+        private void OnTimerElapsed()
+        {
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "WarmUp");
+            _stateMachine.Enter<StartRaceState>();
+        }
     }
 }

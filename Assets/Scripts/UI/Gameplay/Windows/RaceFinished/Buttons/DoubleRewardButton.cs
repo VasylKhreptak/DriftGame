@@ -1,3 +1,4 @@
+using GameAnalyticsSDK;
 using Gameplay.Data;
 using Infrastructure.Services.Advertisement.Core;
 using Infrastructure.Services.ToastMessage.Core;
@@ -35,22 +36,28 @@ namespace UI.Gameplay.Windows.RaceFinished.Buttons
         {
             base.OnDisable();
 
-            _advertisementService.OnRewarded -= DoubleScore;
+            _advertisementService.OnRewarded -= OnRewarded;
         }
 
         #endregion
 
         protected override void OnClicked()
         {
-            _advertisementService.OnRewarded -= DoubleScore;
+            _advertisementService.OnRewarded -= OnRewarded;
 
             if (_advertisementService.ShowRewardedVideo())
-                _advertisementService.OnRewarded += DoubleScore;
+                _advertisementService.OnRewarded += OnRewarded;
             else
                 _toastMessageService.Send("No video available");
 
             Enabled = false;
             _continueButton.Enabled = true;
+        }
+
+        private void OnRewarded()
+        {
+            GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "iron_source", "double_reward");
+            DoubleScore();
         }
 
         private void DoubleScore() => _gameplayData.Score.Add(_gameplayData.Score.Amount.Value);
