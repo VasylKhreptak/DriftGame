@@ -14,7 +14,7 @@ namespace Gameplay.Cars
         [SerializeField] private float _checkInterval = 0.2f;
         [SerializeField] private float _sidewaysSlipThreshold = 0.5f;
 
-        [ShowInInspector, ReadOnly] private readonly BoolReactiveProperty _isDrifting = new BoolReactiveProperty(false);
+        [ShowInInspector] [ReadOnly] private readonly BoolReactiveProperty _isDrifting = new BoolReactiveProperty(false);
 
         private IDisposable _subscription;
 

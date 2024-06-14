@@ -1,4 +1,3 @@
-using System;
 using Gameplay.StateMachine.States;
 using Gameplay.StateMachine.States.Core;
 using Infrastructure.StateMachine.Main.Core;

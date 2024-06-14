@@ -34,7 +34,7 @@ namespace Gameplay.Cars
 
         private float _currentSteerAngle;
 
-        [ShowInInspector, ReadOnly] private int _moveSign;
+        [ShowInInspector] [ReadOnly] private int _moveSign;
 
         private Vector3 _targetWheelPosition;
         private Quaternion _targetWheelRotation;

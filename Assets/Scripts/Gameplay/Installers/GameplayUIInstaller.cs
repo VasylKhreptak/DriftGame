@@ -3,7 +3,7 @@ using UI.Gameplay.Windows.RaceFinished.Buttons;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay
+namespace Gameplay.Installers
 {
     public class GameplayUIInstaller : MonoInstaller
     {

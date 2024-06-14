@@ -8,7 +8,7 @@ namespace Physics.Core
         [SerializeField] private Rigidbody _rigidbody;
 
         [Header("Preferences")]
-        [SerializeField] private float _defaultDrag = 0f;
+        [SerializeField] private float _defaultDrag;
         [SerializeField] private float _defaultAngularDrag = 0.05f;
         [SerializeField] private float _targetDrag = 2f;
         [SerializeField] private float _targetAngularDrag = 2f;

@@ -1,4 +1,3 @@
-using System;
 using Music;
 using Udar.SceneManager;
 using UI.Animations;
@@ -21,7 +20,7 @@ namespace Infrastructure.Data.Static
 
         [Header("Application")]
         [SerializeField] private string _androidAppKey = "1ecb53875";
-        [SerializeField] private string _iosAppKey = String.Empty;
+        [SerializeField] private string _iosAppKey = string.Empty;
 
         [Header("Animations")]
         [SerializeField] private PressAnimation.Preferences _pressAnimationPreferences;

@@ -2,7 +2,7 @@ using Garage.SpawnPoints;
 using UnityEngine;
 using Zenject;
 
-namespace Garage
+namespace Garage.Installers
 {
     public class GarageInstaller : MonoInstaller
     {

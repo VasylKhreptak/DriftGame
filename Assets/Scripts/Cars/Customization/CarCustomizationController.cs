@@ -12,7 +12,8 @@ namespace Cars.Customization
     public class CarCustomizationController : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] KeyValuePairs<PartGroup, List<PartReference>> _parts;
+        [SerializeField]
+        private KeyValuePairs<PartGroup, List<PartReference>> _parts;
 
         private Dictionary<PartGroup, List<PartReference>> _partsDictionary;
 
@@ -49,16 +50,20 @@ namespace Cars.Customization
             List<PartReference> groupParts = _partsDictionary[partGroup.Value];
 
             foreach (PartReference partReference in groupParts)
+            {
                 if (partReference.GameObject != null)
                     partReference.GameObject.SetActive(partReference.Part == part);
+            }
         }
 
         private PartGroup? GetPartGroup(CartPart part)
         {
             foreach (PartGroup partGroup in _partsDictionary.Keys)
             foreach (PartReference partReference in _partsDictionary[partGroup])
+            {
                 if (partReference.Part.Equals(part))
                     return partGroup;
+            }
 
             return null;
         }

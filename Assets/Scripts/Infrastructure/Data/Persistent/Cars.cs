@@ -1,7 +1,4 @@
 namespace Infrastructure.Data.Persistent
 {
-    public class Cars
-    {
-        
-    }
+    public class Cars { }
 }

@@ -11,8 +11,8 @@ namespace Infrastructure.Serialization
         public Dictionary<TKey, TValue> ToDictionary()
         {
             Dictionary<TKey, TValue> dictionary = new Dictionary<TKey, TValue>();
-            
-            foreach (var pair in Pairs)
+
+            foreach (KeyValuePair<TKey, TValue> pair in Pairs)
             {
                 dictionary[pair.Key] = pair.Value;
             }

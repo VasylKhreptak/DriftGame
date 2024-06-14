@@ -9,7 +9,9 @@ namespace Utilities
         private void EnsureConvexEnabled()
         {
             foreach (MeshCollider collider in GetComponentsInChildren<MeshCollider>())
+            {
                 collider.convex = true;
+            }
 
             DestroyImmediate(this);
         }

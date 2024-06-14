@@ -19,7 +19,7 @@ namespace Music
         public async UniTask<AudioClip> GetAudioClipOrNull()
         {
             string url = _preferences.Urls.Random();
-            
+
             using UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
 
             await www.SendWebRequest();

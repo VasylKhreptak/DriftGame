@@ -3,7 +3,7 @@ using UI.Garage.Windows.SelectLevel;
 using UnityEngine;
 using Zenject;
 
-namespace Garage
+namespace Garage.Installers
 {
     public class GarageUIInstaller : MonoInstaller
     {

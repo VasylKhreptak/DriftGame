@@ -41,10 +41,10 @@ namespace Gameplay.StateMachine.States
 
         private void LoadGarage()
         {
-            LoadSceneAsyncState.Payload payload = new LoadSceneAsyncState.Payload()
+            LoadSceneAsyncState.Payload payload = new LoadSceneAsyncState.Payload
             {
                 SceneName = _staticDataService.Config.GarageScene.Name,
-                OnComplete = SaveGame,
+                OnComplete = SaveGame
             };
 
             _gameStateMachine.Enter<LoadSceneWithTransitionAsyncState, LoadSceneAsyncState.Payload>(payload);

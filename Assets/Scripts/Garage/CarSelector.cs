@@ -34,7 +34,7 @@ namespace Garage
             Transform point = _carSpawnPoint.Point;
 
             _currentCar = _instantiator.InstantiatePrefab(_prefabs.Cars[model], point.position, point.rotation, null);
-            
+
             _persistentDataService.Data.PlayerData.SelectedCarModel = model;
         }
     }

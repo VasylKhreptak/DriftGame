@@ -1,5 +1,4 @@
-﻿using System;
-using GameAnalyticsSDK;
+﻿using GameAnalyticsSDK;
 using Infrastructure.Services.Log.Core;
 using Infrastructure.Services.PersistentData.Core;
 using Infrastructure.StateMachine.Game.States.Core;
@@ -34,7 +33,7 @@ namespace Infrastructure.StateMachine.Game.States
 
         public void Exit() => GameAnalytics.onInitialize -= OnInitialized;
 
-        private void OnInitialized(Object obj, bool isInitialized)
+        private void OnInitialized(object obj, bool isInitialized)
         {
             GameAnalytics.onInitialize -= OnInitialized;
 

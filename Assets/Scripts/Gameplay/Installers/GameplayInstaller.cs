@@ -15,7 +15,7 @@ using Infrastructure.StateMachine.Main.Core;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay
+namespace Gameplay.Installers
 {
     public class GameplayInstaller : MonoInstaller
     {
