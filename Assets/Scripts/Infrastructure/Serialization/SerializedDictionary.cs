@@ -36,7 +36,7 @@ namespace Infrastructure.Serialization
             _keys.Clear();
             _values.Clear();
 
-            foreach (KeyValuePair<K, V> kvp in this)
+            foreach (System.Collections.Generic.KeyValuePair<K, V> kvp in this)
             {
                 _keys.Add(SerializeKey(kvp.Key));
                 _values.Add(SerializeValue(kvp.Value));

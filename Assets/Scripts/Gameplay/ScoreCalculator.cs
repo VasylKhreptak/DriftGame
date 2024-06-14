@@ -1,7 +1,7 @@
 using System;
 using Data;
+using Gameplay.Cars;
 using Gameplay.Data;
-using Gameplay.Vehicles;
 using Infrastructure.Services.StaticData.Core;
 using UniRx;
 using UnityEngine;

@@ -16,22 +16,22 @@ namespace Infrastructure.Services.Log
             _staticDataService = staticDataService;
         }
 
-        public void Log(object message)
+        public void Log(object message, Object context = null)
         {
             if (_staticDataService.Config.LogType.HasFlag(LogType.Info))
-                Debug.Log(message);
+                Debug.Log(message, context);
         }
 
-        public void LogWarning(object message)
+        public void LogWarning(object message, Object context = null)
         {
             if (_staticDataService.Config.LogType.HasFlag(LogType.Warning))
-                Debug.LogWarning(message);
+                Debug.LogWarning(message, context);
         }
 
-        public void LogError(object message)
+        public void LogError(object message, Object context = null)
         {
             if (_staticDataService.Config.LogType.HasFlag(LogType.Error))
-                Debug.LogError(message);
+                Debug.LogError(message, context);
         }
     }
 }

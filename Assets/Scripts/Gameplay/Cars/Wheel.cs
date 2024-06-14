@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Gameplay.Vehicles
+namespace Gameplay.Cars
 {
     [Serializable]
     public class Wheel

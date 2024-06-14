@@ -1,7 +1,7 @@
 using Data;
+using Gameplay.Cars;
 using Gameplay.InputService.Core;
 using Gameplay.StateMachine.States.Core;
-using Gameplay.Vehicles;
 using Infrastructure.Services.Log.Core;
 using Infrastructure.StateMachine.Main.Core;
 using Infrastructure.StateMachine.Main.States.Core;

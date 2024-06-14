@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e304f3b9f324e9a8a1ab31969ff457b, type: 3}
   m_Name: GamePrefabs
   m_EditorClassIdentifier: 
-  _prefabs:
-    _keys: 0000000001000000
-    _values:
-    - {fileID: 6812341264395995355, guid: 82527671bfcaaa440be24b00539f2158, type: 3}
-    - {fileID: 1477045605639489638, guid: a32466df0ef7e94469aa818ab8c86468, type: 3}
+  _general:
+    _prefabs:
+      _keys: 01000000
+      _values:
+      - {fileID: 1477045605639489638, guid: a32466df0ef7e94469aa818ab8c86468, type: 3}
+  _cars:
+    _prefabs:
+      _keys: 00000000
+      _values:
+      - {fileID: 6812341264395995355, guid: 82527671bfcaaa440be24b00539f2158, type: 3}

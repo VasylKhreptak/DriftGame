@@ -1,11 +1,13 @@
-﻿namespace Infrastructure.Services.Log.Core
+﻿using UnityEngine;
+
+namespace Infrastructure.Services.Log.Core
 {
     public interface ILogService
     {
-        public void Log(object message);
+        public void Log(object message, Object context = null);
 
-        public void LogWarning(object message);
+        public void LogWarning(object message, Object context = null);
 
-        public void LogError(object message);
+        public void LogError(object message, Object context = null);
     }
 }

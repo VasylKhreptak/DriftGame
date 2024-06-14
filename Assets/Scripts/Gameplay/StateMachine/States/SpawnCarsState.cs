@@ -1,7 +1,8 @@
+using Cars.Customization;
 using Data;
+using Gameplay.Cars;
 using Gameplay.SpawnPoints;
 using Gameplay.StateMachine.States.Core;
-using Gameplay.Vehicles;
 using Infrastructure.Data.Static;
 using Infrastructure.Data.Static.Core;
 using Infrastructure.Services.Log.Core;
@@ -45,8 +46,8 @@ namespace Gameplay.StateMachine.States
         private void SpawnCar()
         {
             Transform spawnPoint = _carSpawnPoints[0];
-            Car car = _instantiator.InstantiatePrefabForComponent<Car>(_prefabs[Prefab.BaseCar], spawnPoint.position, spawnPoint.rotation, null);
-            CameraWrapper camera = _instantiator.InstantiatePrefabForComponent<CameraWrapper>(_prefabs[Prefab.CarCamera]);
+            Car car = _instantiator.InstantiatePrefabForComponent<Car>(_prefabs.Cars[CarModel.Base], spawnPoint.position, spawnPoint.rotation, null);
+            CameraWrapper camera = _instantiator.InstantiatePrefabForComponent<CameraWrapper>(_prefabs.General[Prefab.CarCamera]);
             camera.SetTarget(car.transform);
             _carReactiveHolder.Property.Value = car;
         }

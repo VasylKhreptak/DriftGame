@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay.Vehicles
+namespace Gameplay.Cars
 {
     public class CarController : MonoBehaviour
     {
@@ -27,7 +27,7 @@ namespace Gameplay.Vehicles
         private IInputService _inputService;
 
         [Inject]
-        private void Constructor(IInputService inputService)
+        private void Constructor([InjectOptional] IInputService inputService)
         {
             _inputService = inputService;
         }
@@ -44,6 +44,12 @@ namespace Gameplay.Vehicles
         private void OnValidate() => _rigidbody ??= GetComponent<Rigidbody>();
 
         private void Awake() => _rigidbody.centerOfMass = _COF.localPosition;
+
+        private void OnEnable()
+        {
+            if (_inputService == null)
+                enabled = false;
+        }
 
         private void FixedUpdate()
         {
