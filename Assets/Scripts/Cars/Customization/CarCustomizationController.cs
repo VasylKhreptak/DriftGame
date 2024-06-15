@@ -55,10 +55,8 @@ namespace Cars.Customization
             List<PartReference> groupParts = _partsDictionary[partGroup.Value];
 
             foreach (PartReference partReference in groupParts)
-            {
-                if (partReference.GameObject != null)
-                    partReference.GameObject.SetActive(partReference.Part == part);
-            }
+            foreach (var partObject in partReference.GameObjects)
+                partObject.SetActive(partReference.Part == part);
 
             if (updatePersistentData)
                 UpdatePersistentData(partGroup.Value, part);
@@ -97,7 +95,7 @@ namespace Cars.Customization
         public class PartReference
         {
             public CarPart Part;
-            public GameObject GameObject;
+            public GameObject[] GameObjects;
         }
     }
 }

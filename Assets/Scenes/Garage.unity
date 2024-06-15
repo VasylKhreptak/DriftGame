@@ -1050,7 +1050,6 @@ MonoBehaviour:
   _settingsWindow: {fileID: 1379018466}
   _iapShopWindow: {fileID: 899144649}
   _selectLevelWindow: {fileID: 846171288}
-  _touchpad: {fileID: 0}
 --- !u!1 &162111678
 GameObject:
   m_ObjectHideFlags: 0

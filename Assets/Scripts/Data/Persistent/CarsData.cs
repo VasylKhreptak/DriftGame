@@ -12,7 +12,8 @@ namespace Data.Persistent
             Parts.Add(CarModel.Base, new Dictionary<PartGroup, CarPart>
             {
                 { PartGroup.Spoiler, CarPart.NoSpoiler },
-                { PartGroup.SideSkirt, CarPart.NoSideSkirts }
+                { PartGroup.SideSkirts, CarPart.NoSideSkirts },
+                { PartGroup.Wheels, CarPart.DefaultWheel }
             });
         }
     }
