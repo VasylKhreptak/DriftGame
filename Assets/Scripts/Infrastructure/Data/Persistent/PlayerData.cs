@@ -1,4 +1,5 @@
 using Cars.Customization;
+using Data.Persistent;
 using UniRx;
 
 namespace Infrastructure.Data.Persistent
@@ -11,6 +12,6 @@ namespace Infrastructure.Data.Persistent
 
         public CarModel SelectedCarModel = CarModel.Base;
 
-        public readonly Cars Cars = new Cars();
+        public readonly CarsData Cars = new CarsData();
     }
 }

@@ -48,16 +48,22 @@ namespace Gameplay.Cars
             _rigidbody.centerOfMass = _COF.localPosition;
 
             if (_inputService == null)
-                foreach (var wheel in _wheels)
+            {
+                foreach (Wheel wheel in _wheels)
+                {
                     wheel.Collider.brakeTorque = float.MaxValue;
+                }
+            }
         }
 
         private void FixedUpdate()
         {
             if (_inputService == null)
             {
-                foreach (var wheel in _wheels)
+                foreach (Wheel wheel in _wheels)
+                {
                     UpdateTransform(wheel);
+                }
 
                 return;
             }

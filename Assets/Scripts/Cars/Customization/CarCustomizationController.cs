@@ -12,8 +12,10 @@ namespace Cars.Customization
     public class CarCustomizationController : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField]
-        private KeyValuePairs<PartGroup, List<PartReference>> _parts;
+        [SerializeField] private KeyValuePairs<PartGroup, List<PartReference>> _parts;
+
+        [Header("Preferences")]
+        [SerializeField] private CarModel _carModel;
 
         private Dictionary<PartGroup, List<PartReference>> _partsDictionary;
 
@@ -32,12 +34,14 @@ namespace Cars.Customization
         private void Awake()
         {
             _partsDictionary = _parts.ToDictionary();
+
+            RestoreSavedData();
         }
 
         #endregion
 
         [Button]
-        public void SetPart(CartPart part)
+        public void SetPart(CarPart part, bool updatePersistentData = true)
         {
             PartGroup? partGroup = GetPartGroup(part);
 
@@ -54,9 +58,31 @@ namespace Cars.Customization
                 if (partReference.GameObject != null)
                     partReference.GameObject.SetActive(partReference.Part == part);
             }
+
+            if (updatePersistentData)
+                UpdatePersistentData(partGroup.Value, part);
         }
 
-        private PartGroup? GetPartGroup(CartPart part)
+        private void RestoreSavedData()
+        {
+            if (_persistentDataService.Data.PlayerData.Cars.Parts.TryGetValue(_carModel, out Dictionary<PartGroup, CarPart> parts) == false)
+                return;
+
+            foreach (CarPart part in parts.Values)
+            {
+                SetPart(part, false);
+            }
+        }
+
+        private void UpdatePersistentData(PartGroup partGroup, CarPart carPart)
+        {
+            if (_persistentDataService.Data.PlayerData.Cars.Parts.ContainsKey(_carModel) == false)
+                _persistentDataService.Data.PlayerData.Cars.Parts[_carModel] = new Dictionary<PartGroup, CarPart>();
+
+            _persistentDataService.Data.PlayerData.Cars.Parts[_carModel][partGroup] = carPart;
+        }
+
+        private PartGroup? GetPartGroup(CarPart part)
         {
             foreach (PartGroup partGroup in _partsDictionary.Keys)
             foreach (PartReference partReference in _partsDictionary[partGroup])
@@ -71,7 +97,7 @@ namespace Cars.Customization
         [Serializable]
         public class PartReference
         {
-            public CartPart Part;
+            public CarPart Part;
             public GameObject GameObject;
         }
     }

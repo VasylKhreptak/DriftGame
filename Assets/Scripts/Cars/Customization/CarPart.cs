@@ -1,6 +1,6 @@
 namespace Cars.Customization
 {
-    public enum CartPart
+    public enum CarPart
     {
         NoSpoiler = 0,
         DefaultSpoiler = 1,

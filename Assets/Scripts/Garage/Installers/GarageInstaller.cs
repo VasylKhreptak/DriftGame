@@ -16,6 +16,7 @@ namespace Garage.Installers
 
         [Header("Camera Preferences")]
         [SerializeField] private OrbitingState.Preferences _orbitingPreferences;
+        [SerializeField] private LookAtState.Preferences _lookAtPreferences;
 
         #region MonoBehaviour
 
@@ -48,7 +49,7 @@ namespace Garage.Installers
         private void BindCameraStates()
         {
             Container.Bind<OrbitingState>().AsSingle().WithArguments(_orbitingPreferences);
-            Container.Bind<LookAtState>().AsSingle();
+            Container.Bind<LookAtState>().AsSingle().WithArguments(_lookAtPreferences);
         }
 
         private void EnterCameraDefaultState() => Container.Resolve<IStateMachine<ICameraState>>().Enter<OrbitingState>();

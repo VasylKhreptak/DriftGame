@@ -14,7 +14,7 @@ namespace Garage.CameraManagement.StateMachine.States.Core
             new Dictionary<Type, Func<IBaseState>>
             {
                 [typeof(OrbitingState)] = _container.Resolve<OrbitingState>,
-                [typeof(LookAtState)] = _container.Resolve<LookAtState>,
+                [typeof(LookAtState)] = _container.Resolve<LookAtState>
             };
     }
 }

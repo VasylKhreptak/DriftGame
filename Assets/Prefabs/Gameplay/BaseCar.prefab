@@ -4137,7 +4137,7 @@ MonoBehaviour:
   _controller: {fileID: 6442378983123636449}
   _driftObserver: {fileID: 4489049527246955565}
   _rigidbodyDecelerator: {fileID: 1490261757180442210}
-  _customizationController: {fileID: 0}
+  _customizationController: {fileID: 2531544026435148269}
 --- !u!114 &6442378983123636449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4693,6 +4693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4231948281009441527}
+  - component: {fileID: 2531544026435148269}
   m_Layer: 3
   m_Name: CustomizationControlelr
   m_TagString: Untagged
@@ -4715,6 +4716,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7940189476485559580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2531544026435148269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8011825322042130563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df7bca6a41d3418cb42ca5017c13ad9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parts:
+    Pairs:
+    - Key: 0
+      Value:
+      - Part: 0
+        GameObject: {fileID: 0}
+      - Part: 1
+        GameObject: {fileID: 5746057002223399142}
+    - Key: 1
+      Value:
+      - Part: 2
+        GameObject: {fileID: 0}
+      - Part: 3
+        GameObject: {fileID: 1798028230774932240}
+  _carModel: 0
 --- !u!1 &8210268317292035345
 GameObject:
   m_ObjectHideFlags: 0
