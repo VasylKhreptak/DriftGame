@@ -17,6 +17,6 @@ namespace DebuggerOptions.Core
             _initialized = true;
         }
 
-        public void Dispose() => SRDebug.Instance.RemoveOptionContainer(this);
+        public void Dispose() => SRDebug.Instance?.RemoveOptionContainer(this);
     }
 }

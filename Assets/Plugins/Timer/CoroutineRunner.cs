@@ -32,7 +32,7 @@ namespace Plugins.Timer
         {
             Initialize();
 
-            _behaviour.StopCoroutine(routine);
+            _behaviour?.StopCoroutine(routine);
         }
 
         public class CoroutineRunnerBehaviour : MonoBehaviour { }
