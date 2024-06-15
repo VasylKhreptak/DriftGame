@@ -12,7 +12,7 @@ namespace UI.Buttons.Core
 
         #region MonoBehaivour
 
-        private void OnValidate() => _button ??= GetComponent<Button>();
+        protected virtual void OnValidate() => _button ??= GetComponent<Button>();
 
         protected virtual void OnEnable() => _button.onClick.AddListener(OnClicked);
 

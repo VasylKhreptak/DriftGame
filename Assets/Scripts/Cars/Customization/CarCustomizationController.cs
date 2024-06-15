@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Gameplay.Cars;
 using Infrastructure.Serialization;
 using Infrastructure.Services.Log.Core;
 using Infrastructure.Services.PersistentData.Core;
@@ -12,10 +13,8 @@ namespace Cars.Customization
     public class CarCustomizationController : MonoBehaviour
     {
         [Header("References")]
+        [SerializeField] private Car _car;
         [SerializeField] private KeyValuePairs<PartGroup, List<PartReference>> _parts;
-
-        [Header("Preferences")]
-        [SerializeField] private CarModel _carModel;
 
         private Dictionary<PartGroup, List<PartReference>> _partsDictionary;
 
@@ -40,7 +39,9 @@ namespace Cars.Customization
 
         #endregion
 
-        [Button]
+        public IReadOnlyList<CarPart> GetGroupParts(PartGroup group) => _partsDictionary[group].ConvertAll(x => x.Part);
+
+        [Button, HideInEditorMode]
         public void SetPart(CarPart part, bool updatePersistentData = true)
         {
             PartGroup? partGroup = GetPartGroup(part);
@@ -65,21 +66,19 @@ namespace Cars.Customization
 
         private void RestoreSavedData()
         {
-            if (_persistentDataService.Data.PlayerData.Cars.Parts.TryGetValue(_carModel, out Dictionary<PartGroup, CarPart> parts) == false)
+            if (_persistentDataService.Data.PlayerData.Cars.Parts.TryGetValue(_car.Model, out Dictionary<PartGroup, CarPart> parts) == false)
                 return;
 
             foreach (CarPart part in parts.Values)
-            {
                 SetPart(part, false);
-            }
         }
 
         private void UpdatePersistentData(PartGroup partGroup, CarPart carPart)
         {
-            if (_persistentDataService.Data.PlayerData.Cars.Parts.ContainsKey(_carModel) == false)
-                _persistentDataService.Data.PlayerData.Cars.Parts[_carModel] = new Dictionary<PartGroup, CarPart>();
+            if (_persistentDataService.Data.PlayerData.Cars.Parts.ContainsKey(_car.Model) == false)
+                _persistentDataService.Data.PlayerData.Cars.Parts[_car.Model] = new Dictionary<PartGroup, CarPart>();
 
-            _persistentDataService.Data.PlayerData.Cars.Parts[_carModel][partGroup] = carPart;
+            _persistentDataService.Data.PlayerData.Cars.Parts[_car.Model][partGroup] = carPart;
         }
 
         private PartGroup? GetPartGroup(CarPart part)

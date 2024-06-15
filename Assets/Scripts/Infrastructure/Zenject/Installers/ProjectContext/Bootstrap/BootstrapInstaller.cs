@@ -9,6 +9,7 @@ using Infrastructure.Services.ID;
 using Infrastructure.Services.Log;
 using Infrastructure.Services.PersistentData;
 using Infrastructure.Services.SaveLoad;
+using Infrastructure.Services.Scene;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.StaticData.Core;
 using Infrastructure.Services.ToastMessage;
@@ -65,6 +66,7 @@ namespace Infrastructure.Zenject.Installers.ProjectContext.Bootstrap
             Container.BindInterfacesTo<ToastMessageService>().AsSingle();
             Container.Bind<BackgroundMusicProvider>().AsSingle();
             Container.Bind<BackgroundMusicPlayer>().AsSingle();
+            Container.BindInterfacesTo<SceneService>().AsSingle();
         }
 
         private void BindScreenObserver() => Container.BindInterfacesAndSelfTo<ScreenObserver>().AsSingle();

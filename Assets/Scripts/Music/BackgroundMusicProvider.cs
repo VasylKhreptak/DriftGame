@@ -1,7 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Extensions;
 using Infrastructure.Services.StaticData.Core;
+using Plugins.Extensions;
 using UnityEngine;
 using UnityEngine.Networking;
 

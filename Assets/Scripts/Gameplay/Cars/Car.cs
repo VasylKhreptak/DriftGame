@@ -12,10 +12,15 @@ namespace Gameplay.Cars
         [SerializeField] private RigidbodyDecelerator _rigidbodyDecelerator;
         [SerializeField] private CarCustomizationController _customizationController;
 
+        [Header("Preferences")]
+        [SerializeField] private CarModel _carModel;
+
         public CarController Controller => _controller;
         public DriftObserver DriftObserver => _driftObserver;
         public RigidbodyDecelerator RigidbodyDecelerator => _rigidbodyDecelerator;
         public CarCustomizationController CustomizationController => _customizationController;
+
+        public CarModel Model => _carModel;
 
         #region MonoBehaviour
 
