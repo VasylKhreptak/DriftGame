@@ -98,6 +98,9 @@ namespace Garage.CameraManagement.StateMachine.States
 
         private void UpdateLastStateValues()
         {
+            if (_cameraTransform == null)
+                return;
+
             _lastPosition = _cameraTransform.position;
             _lastRotation = _cameraTransform.rotation;
         }
