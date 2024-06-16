@@ -65,7 +65,7 @@ namespace Infrastructure.Zenject.Installers.ProjectContext.Bootstrap
             Container.BindInterfacesTo<AdvertisementService>().AsSingle();
             Container.BindInterfacesTo<ToastMessageService>().AsSingle();
             Container.Bind<BackgroundMusicProvider>().AsSingle();
-            Container.Bind<BackgroundMusicPlayer>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BackgroundMusicPlayer>().AsSingle();
             Container.BindInterfacesTo<SceneService>().AsSingle();
         }
 

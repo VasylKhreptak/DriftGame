@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Infrastructure.Services.StaticData.Core;
 using Plugins.Extensions;
@@ -16,16 +17,18 @@ namespace Music
             _preferences = staticDataService.Config.BackgroundMusicPreferences;
         }
 
-        public async UniTask<AudioClip> GetAudioClipOrNull()
+        public async UniTask<AudioClip> GetAudioClipAsync(CancellationToken cancellationToken)
         {
             string url = _preferences.Urls.Random();
 
             using UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
 
-            await www.SendWebRequest();
+            await www.SendWebRequest().ToUniTask(cancellationToken: cancellationToken);
 
             if (www.result != UnityWebRequest.Result.Success)
-                return null;
+            {
+                throw new Exception($"Failed to download audio clip: {www.error}");
+            }
 
             return DownloadHandlerAudioClip.GetContent(www);
         }
