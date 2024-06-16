@@ -1,34 +1,20 @@
-using Infrastructure.Services.StaticData.Core;
-using Infrastructure.StateMachine.Game.States;
-using Infrastructure.StateMachine.Game.States.Core;
-using Infrastructure.StateMachine.Main.Core;
+using Infrastructure.Graphics.UI.Windows.Core;
 using UI.Buttons.Core;
+using UI.Garage.Windows.Room;
 using Zenject;
 
 namespace UI.Garage.Buttons
 {
     public class PlayButton : BaseButton
     {
-        private IStateMachine<IGameState> _stateMachine;
-        private IStaticDataService _staticDataService;
+        private IWindow _roomWindows;
 
         [Inject]
-        private void Constructor(IStateMachine<IGameState> stateMachine, IStaticDataService staticDataService)
+        private void Constructor(RoomWindow roomWindow)
         {
-            _stateMachine = stateMachine;
-            _staticDataService = staticDataService;
+            _roomWindows = roomWindow;
         }
 
-        protected override void OnClicked()
-        {
-            LoadSceneAsyncState.Payload payload = new LoadSceneAsyncState.Payload
-            {
-                SceneName = _staticDataService.Config.GameplayScene.Name
-            };
-
-            _stateMachine.Enter<LoadSceneWithTransitionAsyncState, LoadSceneAsyncState.Payload>(payload);
-
-            Button.interactable = false;
-        }
+        protected override void OnClicked() => _roomWindows.Show();
     }
 }

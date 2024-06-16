@@ -4,7 +4,7 @@ using Infrastructure.StateMachine.Main.States.Core;
 using Infrastructure.StateMachine.Main.States.Factory;
 using Zenject;
 
-namespace Gameplay.StateMachine.States.Factory
+namespace Gameplay.StateMachine.States.Core
 {
     public class GameplayStateFactory : StateFactory
     {
@@ -14,7 +14,6 @@ namespace Gameplay.StateMachine.States.Factory
             new Dictionary<Type, Func<IBaseState>>
             {
                 [typeof(InitializeState)] = _container.Resolve<InitializeState>,
-                [typeof(InitializeConnectionState)] = _container.Resolve<InitializeConnectionState>,
                 [typeof(SpawnCarsState)] = _container.Resolve<SpawnCarsState>,
                 [typeof(WarmUpState)] = _container.Resolve<WarmUpState>,
                 [typeof(StartRaceState)] = _container.Resolve<StartRaceState>,

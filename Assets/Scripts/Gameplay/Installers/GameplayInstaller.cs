@@ -8,7 +8,6 @@ using Gameplay.SpawnPoints;
 using Gameplay.StateMachine;
 using Gameplay.StateMachine.States;
 using Gameplay.StateMachine.States.Core;
-using Gameplay.StateMachine.States.Factory;
 using Gameplay.TimeManagement;
 using Infrastructure.Services.Advertisement.Core;
 using Infrastructure.StateMachine.Main.Core;
@@ -75,7 +74,6 @@ namespace Gameplay.Installers
         private void BindStates()
         {
             Container.Bind<InitializeState>().AsSingle();
-            Container.Bind<InitializeConnectionState>().AsSingle();
             Container.Bind<SpawnCarsState>().AsSingle();
             Container.Bind<WarmUpState>().AsSingle();
             Container.Bind<StartRaceState>().AsSingle();

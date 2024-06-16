@@ -28,6 +28,9 @@ namespace Infrastructure.Data.Static
         [Header("Music")]
         [SerializeField] private BackgroundMusicProvider.Preferences _backgroundMusicPreferences;
 
+        [Header("Multiplayer")]
+        [SerializeField] private int _requiredPlayersCount = 2;
+
         public SceneField BootstrapScene => _bootstrapScene;
         public SceneField GarageScene => _garageScene;
         public SceneField GameplayScene => _gameplayScene;

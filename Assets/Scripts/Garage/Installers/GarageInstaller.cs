@@ -31,7 +31,6 @@ namespace Garage.Installers
         public override void InstallBindings()
         {
             Container.BindInstance(_carSpawnPoint).AsSingle();
-
             Container.Bind<CarSelector>().AsSingle();
             Container.BindInstance(_camera).AsSingle();
 
