@@ -64,7 +64,7 @@ namespace UI.Garage.Buttons.Customization
             if (_cameraStateMachine == null)
                 return;
 
-            LookAtState.Payload payload = new LookAtState.Payload()
+            LookAtState.Payload payload = new LookAtState.Payload
             {
                 Point = _lookTransform.position,
                 Direction = _lookTransform.forward,

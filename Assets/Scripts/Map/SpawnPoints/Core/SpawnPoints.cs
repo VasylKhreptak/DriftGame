@@ -8,7 +8,7 @@ namespace Map.SpawnPoints.Core
         [SerializeField] private Transform[] _transforms;
 
         public Transform this[int index] => _transforms[index];
-        
+
         public int Count => _transforms.Length;
     }
 }

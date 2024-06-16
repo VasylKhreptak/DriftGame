@@ -40,8 +40,12 @@ namespace Infrastructure.StateMachine.Game.States
         private void Initialize(IEnumerable<GameObject> prefabs)
         {
             if (PhotonNetwork.PrefabPool is DefaultPool pool)
+            {
                 foreach (GameObject prefab in prefabs)
+                {
                     pool.ResourceCache.Add(prefab.name, prefab);
+                }
+            }
 
             _initialized = true;
         }

@@ -20,9 +20,7 @@ namespace Multiplayer
             GameObjectContext context = gameObject.GetComponent<GameObjectContext>();
 
             if (context == null)
-            {
                 gameObject.AddComponent<GameObjectContext>();
-            }
 
             _container.InjectGameObject(gameObject);
 

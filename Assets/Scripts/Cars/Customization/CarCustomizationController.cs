@@ -49,7 +49,7 @@ namespace Cars.Customization
 
         public IReadOnlyList<CarPart> GetGroupParts(PartGroup group) => _partsDictionary[group].ConvertAll(x => x.Part);
 
-        [Button, HideInEditorMode]
+        [Button] [HideInEditorMode]
         public void SetPart(CarPart part)
         {
             SetPartInternal(part);
@@ -74,8 +74,10 @@ namespace Cars.Customization
             List<PartReference> groupParts = _partsDictionary[partGroup.Value];
 
             foreach (PartReference partReference in groupParts)
-            foreach (var partObject in partReference.GameObjects)
+            foreach (GameObject partObject in partReference.GameObjects)
+            {
                 partObject.SetActive(partReference.Part == part);
+            }
 
             if (updatePersistentData)
                 UpdatePersistentData(partGroup.Value, part);

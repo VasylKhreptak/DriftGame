@@ -16,8 +16,10 @@ namespace Cars.Customization
 
         public void SetActive(bool enabled)
         {
-            foreach (var button in _openCustomizationMenuButtons)
+            foreach (OpenCustomizationMenuButton button in _openCustomizationMenuButtons)
+            {
                 button.Enabled = enabled;
+            }
         }
     }
 }

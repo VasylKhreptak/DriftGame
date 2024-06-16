@@ -26,9 +26,7 @@ namespace Music
             await www.SendWebRequest().ToUniTask(cancellationToken: cancellationToken);
 
             if (www.result != UnityWebRequest.Result.Success)
-            {
                 throw new Exception($"Failed to download audio clip: {www.error}");
-            }
 
             return DownloadHandlerAudioClip.GetContent(www);
         }

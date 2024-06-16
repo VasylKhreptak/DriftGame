@@ -4,6 +4,6 @@ namespace Cars.Customization
     {
         Spoiler = 0,
         SideSkirts = 1,
-        Wheels = 2,
+        Wheels = 2
     }
 }

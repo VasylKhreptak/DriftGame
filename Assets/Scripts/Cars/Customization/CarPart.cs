@@ -7,6 +7,6 @@ namespace Cars.Customization
         NoSideSkirts = 2,
         DefaultSideSkirts = 3,
         DefaultWheel = 4,
-        NoHubWheel = 5,
+        NoHubWheel = 5
     }
 }
