@@ -24,7 +24,7 @@ namespace Gameplay.StateMachine.States
             _logService.Log("InitializeState");
 
             _inputService.Enabled = false;
-            _stateMachine.Enter<SpawnCarsState>();
+            _stateMachine.Enter<SpawnCarState>();
         }
     }
 }

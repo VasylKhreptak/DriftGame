@@ -14,7 +14,7 @@ namespace Gameplay.StateMachine.States.Core
             new Dictionary<Type, Func<IBaseState>>
             {
                 [typeof(InitializeState)] = _container.Resolve<InitializeState>,
-                [typeof(SpawnCarsState)] = _container.Resolve<SpawnCarsState>,
+                [typeof(SpawnCarState)] = _container.Resolve<SpawnCarState>,
                 [typeof(WarmUpState)] = _container.Resolve<WarmUpState>,
                 [typeof(StartRaceState)] = _container.Resolve<StartRaceState>,
                 [typeof(FinishRaceState)] = _container.Resolve<FinishRaceState>,

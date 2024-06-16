@@ -22,7 +22,7 @@ namespace Infrastructure.StateMachine.Game.States
         {
             _logService.Log("SetupApplicationState");
             DisableSleepTimeout();
-            _gameStateMachine.Enter<BootstrapFirebaseState>();
+            _gameStateMachine.Enter<InitializePhotonPrefabsState>();
         }
 
         private void DisableSleepTimeout() => Screen.sleepTimeout = SleepTimeout.NeverSleep;

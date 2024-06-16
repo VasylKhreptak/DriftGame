@@ -18,6 +18,7 @@ namespace Infrastructure.StateMachine.Game.Factory
                 [typeof(BootstrapState)] = _container.Resolve<BootstrapState>,
                 [typeof(LoadDataState)] = _container.Resolve<LoadDataState>,
                 [typeof(SetupApplicationState)] = _container.Resolve<SetupApplicationState>,
+                [typeof(InitializePhotonPrefabsState)] = _container.Resolve<InitializePhotonPrefabsState>,
                 [typeof(BootstrapFirebaseState)] = _container.Resolve<BootstrapFirebaseState>,
                 [typeof(BootstrapAnalyticsState)] = _container.Resolve<BootstrapAnalyticsState>,
                 [typeof(BootstrapAdvertisementsState)] = _container.Resolve<BootstrapAdvertisementsState>,

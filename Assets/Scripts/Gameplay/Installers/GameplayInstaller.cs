@@ -74,7 +74,7 @@ namespace Gameplay.Installers
         private void BindStates()
         {
             Container.Bind<InitializeState>().AsSingle();
-            Container.Bind<SpawnCarsState>().AsSingle();
+            Container.Bind<SpawnCarState>().AsSingle();
             Container.Bind<WarmUpState>().AsSingle();
             Container.Bind<StartRaceState>().AsSingle();
             Container.Bind<FinishRaceState>().AsSingle();

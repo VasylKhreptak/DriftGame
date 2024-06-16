@@ -86,6 +86,7 @@ namespace Infrastructure.Zenject.Installers.ProjectContext.Bootstrap
             Container.Bind<BootstrapState>().AsSingle();
             Container.Bind<LoadDataState>().AsSingle();
             Container.Bind<SetupApplicationState>().AsSingle();
+            Container.Bind<InitializePhotonPrefabsState>().AsSingle();
             Container.Bind<BootstrapFirebaseState>().AsSingle();
             Container.Bind<BootstrapAnalyticsState>().AsSingle();
             Container.Bind<BootstrapAdvertisementsState>().AsSingle();

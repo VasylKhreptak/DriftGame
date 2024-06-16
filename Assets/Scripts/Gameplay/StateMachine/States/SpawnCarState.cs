@@ -14,7 +14,7 @@ using Zenject;
 
 namespace Gameplay.StateMachine.States
 {
-    public class SpawnCarsState : IGameplayState, IState
+    public class SpawnCarState : IGameplayState, IState
     {
         private readonly IStateMachine<IGameplayState> _stateMachine;
         private readonly ILogService _logService;
@@ -23,7 +23,7 @@ namespace Gameplay.StateMachine.States
         private readonly CarSpawnPoints _carSpawnPoints;
         private readonly ReactiveHolder<Car> _carReactiveHolder;
 
-        public SpawnCarsState(IStateMachine<IGameplayState> stateMachine, ILogService logService, IStaticDataService staticDataService,
+        public SpawnCarState(IStateMachine<IGameplayState> stateMachine, ILogService logService, IStaticDataService staticDataService,
             IInstantiator instantiator, CarSpawnPoints carSpawnPoints, ReactiveHolder<Car> carReactiveHolder)
         {
             _stateMachine = stateMachine;
