@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598b55bcff044c148f11cfb4e8685d0a, type: 3}
   m_Name: GameBalance
   m_EditorClassIdentifier: 
+  _warmUpDuration: 10
+  _raceDuration: 120
+  _scorePreferences:
+    _startScore: 10
+    _interval: 0.1
+    _scorePerInterval: 5
