@@ -1,11 +1,12 @@
 using System;
+using Photon.Pun;
 using Sirenix.OdinInspector;
 using UniRx;
 using UnityEngine;
 
 namespace Gameplay.Cars
 {
-    public class DriftObserver : MonoBehaviour
+    public class DriftObserver : MonoBehaviourPunCallbacks
     {
         [Header("References")]
         [SerializeField] private WheelCollider[] _wheelColliders;
@@ -24,15 +25,25 @@ namespace Gameplay.Cars
 
         #region MonoBehaviour
 
-        private void OnEnable()
+        private void Start() => enabled = photonView.IsMine;
+
+        public override void OnEnable()
         {
+            base.OnEnable();
+
             _subscription = Observable
                 .Interval(TimeSpan.FromSeconds(_checkInterval))
                 .DoOnSubscribe(UpdateIsDriftingProperty)
                 .Subscribe(_ => UpdateIsDriftingProperty());
         }
 
-        private void OnDisable() => _subscription?.Dispose();
+        public override void OnDisable()
+        {
+            base.OnDisable();
+
+            _subscription?.Dispose();
+            _isDrifting.Value = false;
+        }
 
         #endregion
 

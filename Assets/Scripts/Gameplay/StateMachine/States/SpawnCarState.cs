@@ -1,4 +1,6 @@
+using System;
 using Cars.Customization;
+using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Cars;
 using Gameplay.SpawnPoints;
@@ -9,6 +11,7 @@ using Infrastructure.Services.Log.Core;
 using Infrastructure.Services.StaticData.Core;
 using Infrastructure.StateMachine.Main.Core;
 using Infrastructure.StateMachine.Main.States.Core;
+using Multiplayer;
 using UnityEngine;
 using Zenject;
 
@@ -22,15 +25,17 @@ namespace Gameplay.StateMachine.States
         private readonly IInstantiator _instantiator;
         private readonly CarSpawnPoints _carSpawnPoints;
         private readonly ReactiveHolder<Car> _carReactiveHolder;
+        private readonly PhotonFactory _photonFactory;
 
         public SpawnCarState(IStateMachine<IGameplayState> stateMachine, ILogService logService, IStaticDataService staticDataService,
-            IInstantiator instantiator, CarSpawnPoints carSpawnPoints, ReactiveHolder<Car> carReactiveHolder)
+            IInstantiator instantiator, CarSpawnPoints carSpawnPoints, ReactiveHolder<Car> carReactiveHolder, PhotonFactory photonFactory)
         {
             _stateMachine = stateMachine;
             _logService = logService;
             _instantiator = instantiator;
             _carSpawnPoints = carSpawnPoints;
             _carReactiveHolder = carReactiveHolder;
+            _photonFactory = photonFactory;
             _prefabs = staticDataService.Prefabs;
         }
 
@@ -46,7 +51,8 @@ namespace Gameplay.StateMachine.States
         private void SpawnCar()
         {
             Transform spawnPoint = _carSpawnPoints[0];
-            Car car = _instantiator.InstantiatePrefabForComponent<Car>(_prefabs.Cars[CarModel.Base], spawnPoint.position, spawnPoint.rotation, null);
+            GameObject carObject = _photonFactory.Create(_prefabs.Cars[CarModel.Base].name, spawnPoint.position, spawnPoint.rotation);
+            Car car = carObject.GetComponent<Car>();
             CameraWrapper camera = _instantiator.InstantiatePrefabForComponent<CameraWrapper>(_prefabs.General[Prefab.CarCamera]);
             camera.SetTarget(car.transform);
             _carReactiveHolder.Property.Value = car;

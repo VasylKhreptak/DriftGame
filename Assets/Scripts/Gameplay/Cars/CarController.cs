@@ -1,12 +1,14 @@
+using System;
 using System.Collections.Generic;
 using Gameplay.InputService.Core;
+using Photon.Pun;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
 namespace Gameplay.Cars
 {
-    public class CarController : MonoBehaviour
+    public class CarController : MonoBehaviourPunCallbacks
     {
         private const float MinSpeed = 0.1f;
 
@@ -55,6 +57,8 @@ namespace Gameplay.Cars
                 }
             }
         }
+
+        private void Start() => enabled = photonView.IsMine;
 
         private void FixedUpdate()
         {

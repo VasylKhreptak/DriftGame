@@ -11,6 +11,7 @@ using Gameplay.StateMachine.States.Core;
 using Gameplay.TimeManagement;
 using Infrastructure.Services.Advertisement.Core;
 using Infrastructure.StateMachine.Main.Core;
+using Multiplayer;
 using UnityEngine;
 using Zenject;
 
@@ -49,12 +50,15 @@ namespace Gameplay.Installers
 
             Container.BindInterfacesTo<ScoreCalculator>().AsSingle();
 
+            BIndPhotonFactory();
             BindInputService();
             BindStateMachine();
             BindDebugOptionsContainer();
             PreloadAd();
             StartGameplay();
         }
+
+        private void BIndPhotonFactory() => Container.Bind<PhotonFactory>().AsSingle();
 
         private void BindInputService()
         {
