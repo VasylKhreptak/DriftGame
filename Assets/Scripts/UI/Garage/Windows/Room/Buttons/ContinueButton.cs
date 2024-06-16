@@ -51,16 +51,14 @@ namespace UI.Garage.Windows.Room.Buttons
 
         #endregion
 
-        private void OnPlayersCountChanged(int count)
-        {
-            if (count is 1 or 0)
-                gameObject.SetActive(PhotonNetwork.IsMasterClient);
-        }
+        private void OnPlayersCountChanged(int count) => gameObject.SetActive(PhotonNetwork.IsMasterClient && count >= 1);
 
         private void StartGameplay()
         {
             photonView.RPC(nameof(LoadGameplay), RpcTarget.All);
             _button.interactable = false;
+
+            PhotonNetwork.CurrentRoom.IsOpen = false;
         }
 
         [PunRPC]

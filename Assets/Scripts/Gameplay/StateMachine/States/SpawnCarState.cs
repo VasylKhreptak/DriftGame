@@ -1,7 +1,8 @@
 using Cars.Customization;
+using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Cars;
-using Gameplay.SpawnPoints;
+using Gameplay.Multiplayer;
 using Gameplay.StateMachine.States.Core;
 using Infrastructure.Data.Static;
 using Infrastructure.Data.Static.Core;
@@ -21,32 +22,32 @@ namespace Gameplay.StateMachine.States
         private readonly ILogService _logService;
         private readonly Prefabs _prefabs;
         private readonly IInstantiator _instantiator;
-        private readonly CarSpawnPoints _carSpawnPoints;
         private readonly ReactiveHolder<Car> _carReactiveHolder;
+        private readonly CarSpawnPointProvider _spawnPointProvider;
 
         public SpawnCarState(IStateMachine<IGameplayState> stateMachine, ILogService logService, IStaticDataService staticDataService,
-            IInstantiator instantiator, CarSpawnPoints carSpawnPoints, ReactiveHolder<Car> carReactiveHolder)
+            IInstantiator instantiator, ReactiveHolder<Car> carReactiveHolder, CarSpawnPointProvider spawnPointProvider)
         {
             _stateMachine = stateMachine;
             _logService = logService;
             _instantiator = instantiator;
-            _carSpawnPoints = carSpawnPoints;
             _carReactiveHolder = carReactiveHolder;
+            _spawnPointProvider = spawnPointProvider;
             _prefabs = staticDataService.Prefabs;
         }
 
-        public void Enter()
+        public async void Enter()
         {
             _logService.Log("SpawnCarsState");
 
-            SpawnCar();
+            await SpawnCar();
 
             _stateMachine.Enter<WarmUpState>();
         }
 
-        private void SpawnCar()
+        private async UniTask SpawnCar()
         {
-            Transform spawnPoint = _carSpawnPoints[0];
+            Transform spawnPoint = await _spawnPointProvider.Get();
             GameObject carObject = PhotonNetwork.Instantiate(_prefabs.Cars[CarModel.Base].name, spawnPoint.position, spawnPoint.rotation);
             Car car = carObject.GetComponent<Car>();
             CameraWrapper camera = _instantiator.InstantiatePrefabForComponent<CameraWrapper>(_prefabs.General[Prefab.CarCamera]);

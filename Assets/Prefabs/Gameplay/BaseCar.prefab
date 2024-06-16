@@ -4164,6 +4164,7 @@ GameObject:
   - component: {fileID: 7765633849049017080}
   - component: {fileID: 8183159219897527909}
   - component: {fileID: 3831818560315159396}
+  - component: {fileID: 4976586681451980287}
   m_Layer: 3
   m_Name: BaseCar
   m_TagString: Untagged
@@ -4375,6 +4376,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 8183159219897527909}
+  - {fileID: 4976586681451980287}
   - {fileID: 1303842197073204038}
   - {fileID: 3532818052304897827}
   - {fileID: 6061659146077389702}
@@ -4411,6 +4413,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _containerSource: 0
+--- !u!114 &4976586681451980287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812341264395995355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 0
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &6904375998893916450
 GameObject:
   m_ObjectHideFlags: 0

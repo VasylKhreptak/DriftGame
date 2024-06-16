@@ -4,6 +4,7 @@ using Gameplay.Data;
 using Gameplay.DebuggerOptions;
 using Gameplay.InputService;
 using Gameplay.InputService.Core;
+using Gameplay.Multiplayer;
 using Gameplay.SpawnPoints;
 using Gameplay.StateMachine;
 using Gameplay.StateMachine.States;
@@ -11,8 +12,6 @@ using Gameplay.StateMachine.States.Core;
 using Gameplay.TimeManagement;
 using Infrastructure.Services.Advertisement.Core;
 using Infrastructure.StateMachine.Main.Core;
-using Multiplayer;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using Zenject;
 
@@ -23,6 +22,7 @@ namespace Gameplay.Installers
         [Header("References")]
         [SerializeField] private ScreenInputService _screenInputService;
         [SerializeField] private CarSpawnPoints _carSpawnPoints;
+        [SerializeField] private CarSpawnPointProvider _carSpawnPointProvider;
 
         private IAdvertisementService _advertisementService;
 
@@ -38,6 +38,7 @@ namespace Gameplay.Installers
         {
             _screenInputService ??= FindObjectOfType<ScreenInputService>();
             _carSpawnPoints ??= FindObjectOfType<CarSpawnPoints>();
+            _carSpawnPointProvider ??= FindObjectOfType<CarSpawnPointProvider>();
         }
 
         #endregion
@@ -48,8 +49,10 @@ namespace Gameplay.Installers
             Container.BindInstance(_carSpawnPoints).AsSingle();
             Container.Bind<ReactiveHolder<Car>>().AsSingle();
             Container.Bind<GameplayData>().AsSingle();
+            Container.BindInstance(_carSpawnPointProvider).AsSingle();
 
             Container.BindInterfacesTo<ScoreCalculator>().AsSingle();
+            Container.BindInterfacesTo<RoomAutoLeave>().AsSingle();
 
             BindInputService();
             BindStateMachine();
