@@ -46,7 +46,7 @@ namespace Music
 
         private async UniTaskVoid Play()
         {
-            while (true)
+            while (true
             {
                 AudioClip clip = await _backgroundMusicProvider.GetAudioClipOrNull();
 
