@@ -41,6 +41,9 @@ MonoBehaviour:
   - RespawnSpaceship
   - LoadGameplay
   - UpdateSpawnPointIndex
+  - ProvideSpawnPoint
+  - UpdateSpawnPointOnServer
+  - SetPartInternal
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

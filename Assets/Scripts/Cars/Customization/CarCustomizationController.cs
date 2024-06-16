@@ -4,13 +4,15 @@ using Gameplay.Cars;
 using Infrastructure.Serialization;
 using Infrastructure.Services.Log.Core;
 using Infrastructure.Services.PersistentData.Core;
+using Infrastructure.Services.Scene.Core;
+using Photon.Pun;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
 namespace Cars.Customization
 {
-    public class CarCustomizationController : MonoBehaviour
+    public class CarCustomizationController : MonoBehaviourPunCallbacks
     {
         [Header("References")]
         [SerializeField] private Car _car;
@@ -20,12 +22,14 @@ namespace Cars.Customization
 
         private ILogService _logService;
         private IPersistentDataService _persistentDataService;
+        private ISceneService _sceneService;
 
         [Inject]
-        private void Constructor(ILogService logService, IPersistentDataService persistentDataService)
+        private void Constructor(ILogService logService, IPersistentDataService persistentDataService, ISceneService sceneService)
         {
             _logService = logService;
             _persistentDataService = persistentDataService;
+            _sceneService = sceneService;
         }
 
         #region MonoBehaviour
@@ -33,8 +37,12 @@ namespace Cars.Customization
         private void Awake()
         {
             _partsDictionary = _parts.ToDictionary();
+        }
 
-            RestoreSavedData();
+        private void Start()
+        {
+            if (photonView.IsMine || _sceneService.IsInGarage())
+                RestoreSavedData();
         }
 
         #endregion
@@ -42,7 +50,18 @@ namespace Cars.Customization
         public IReadOnlyList<CarPart> GetGroupParts(PartGroup group) => _partsDictionary[group].ConvertAll(x => x.Part);
 
         [Button, HideInEditorMode]
-        public void SetPart(CarPart part, bool updatePersistentData = true)
+        public void SetPart(CarPart part)
+        {
+            SetPartInternal(part);
+
+            if (_sceneService.IsInGarage())
+                return;
+
+            photonView.RPC(nameof(SetPartInternal), RpcTarget.OthersBuffered, part, false);
+        }
+
+        [PunRPC]
+        private void SetPartInternal(CarPart part, bool updatePersistentData = true)
         {
             PartGroup? partGroup = GetPartGroup(part);
 
@@ -68,7 +87,12 @@ namespace Cars.Customization
                 return;
 
             foreach (CarPart part in parts.Values)
-                SetPart(part, false);
+            {
+                if (_sceneService.IsInGarage())
+                    SetPartInternal(part, false);
+                else
+                    photonView.RPC(nameof(SetPartInternal), RpcTarget.AllBuffered, part, false);
+            }
         }
 
         private void UpdatePersistentData(PartGroup partGroup, CarPart carPart)
