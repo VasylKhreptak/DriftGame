@@ -29,7 +29,7 @@ namespace Infrastructure.Data.Static
         [SerializeField] private BackgroundMusicProvider.Preferences _backgroundMusicPreferences;
 
         [Header("Multiplayer")]
-        [SerializeField] private int _requiredPlayersCount = 2;
+        [SerializeField] private int _maxPlayersCount = 2;
 
         public SceneField BootstrapScene => _bootstrapScene;
         public SceneField GarageScene => _garageScene;
@@ -44,5 +44,7 @@ namespace Infrastructure.Data.Static
             Application.platform == RuntimePlatform.IPhonePlayer ? _iosAppKey : "unexpected_platform";
 
         public BackgroundMusicProvider.Preferences BackgroundMusicPreferences => _backgroundMusicPreferences;
+
+        public int MaxPlayersCount => _maxPlayersCount;
     }
 }

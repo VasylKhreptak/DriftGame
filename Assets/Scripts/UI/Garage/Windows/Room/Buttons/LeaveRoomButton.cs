@@ -1,10 +1,10 @@
 using Multiplayer;
-using UI.Windows.Core;
+using UI.Buttons.Core;
 using Zenject;
 
-namespace UI.Garage.Windows.Room
+namespace UI.Garage.Windows.Room.Buttons
 {
-    public class RoomWindow : BaseWindow
+    public class LeaveRoomButton : BaseButton
     {
         private RoomManager _roomManager;
 
@@ -14,11 +14,6 @@ namespace UI.Garage.Windows.Room
             _roomManager = roomManager;
         }
 
-        public override void Hide()
-        {
-            base.Hide();
-
-            _roomManager.Leave();
-        }
+        protected override void OnClicked() => _roomManager.Leave();
     }
 }

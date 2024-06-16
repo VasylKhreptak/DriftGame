@@ -3,6 +3,7 @@ using Garage.CameraManagement.StateMachine.States;
 using Garage.CameraManagement.StateMachine.States.Core;
 using Garage.SpawnPoints;
 using Infrastructure.StateMachine.Main.Core;
+using Multiplayer;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +14,7 @@ namespace Garage.Installers
         [Header("References")]
         [SerializeField] private CarSpawnPoint _carSpawnPoint;
         [SerializeField] private Camera _camera;
+        [SerializeField] private RoomManager _roomManager;
 
         [Header("Camera Preferences")]
         [SerializeField] private OrbitingState.Preferences _orbitingPreferences;
@@ -24,6 +26,7 @@ namespace Garage.Installers
         {
             _carSpawnPoint ??= FindObjectOfType<CarSpawnPoint>(true);
             _camera ??= FindObjectOfType<Camera>(true);
+            _roomManager ??= FindObjectOfType<RoomManager>(true);
         }
 
         #endregion
@@ -33,6 +36,7 @@ namespace Garage.Installers
             Container.BindInstance(_carSpawnPoint).AsSingle();
             Container.Bind<CarSelector>().AsSingle();
             Container.BindInstance(_camera).AsSingle();
+            Container.BindInstance(_roomManager).AsSingle();
 
             BindCameraStateMachine();
             EnterCameraDefaultState();

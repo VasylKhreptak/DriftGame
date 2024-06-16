@@ -34,7 +34,7 @@ namespace UI.Windows.Core
 
         #endregion
 
-        public void Show()
+        public virtual void Show()
         {
             _showAnimation.Stop();
 
@@ -42,7 +42,7 @@ namespace UI.Windows.Core
             _showAnimation.PlayForward();
         }
 
-        public void Hide()
+        public virtual void Hide()
         {
             _showAnimation.Stop();
 
