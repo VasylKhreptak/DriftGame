@@ -1,13 +1,13 @@
-using Infrastructure.Services.StaticData.Core;
-using Photon.Pun;
-using Photon.Realtime;
+using System;
+using Multiplayer;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
 namespace UI.Garage.Windows.Room.Texts
 {
-    public class RoomPlayersCountText : MonoBehaviourPunCallbacks
+    public class RoomPlayersCountText : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private TMP_Text _tmp;
@@ -15,43 +15,24 @@ namespace UI.Garage.Windows.Room.Texts
         [Header("Preferences")]
         [SerializeField] private string _format = "Players {0}/{1}";
 
-        private IStaticDataService _staticDataService;
+        private RoomPlayersCountObserver _playersCountObserver;
 
         [Inject]
-        private void Constructor(IStaticDataService staticDataService)
+        private void Construct(RoomPlayersCountObserver playersCountObserver)
         {
-            _staticDataService = staticDataService;
+            _playersCountObserver = playersCountObserver;
         }
+
+        private IDisposable _subscription;
 
         #region MonoBehaviour
 
-        private void OnValidate() => _tmp ??= GetComponent<TMP_Text>();
+        private void OnEnable() => _subscription = _playersCountObserver.Count.Subscribe(OnPlayersCountChanged);
 
-        public override void OnEnable()
-        {
-            base.OnEnable();
-
-            UpdateText();
-        }
+        private void OnDisable() => _subscription?.Dispose();
 
         #endregion
 
-        public override void OnJoinedRoom() => UpdateText();
-
-        public override void OnPlayerEnteredRoom(Player newPlayer) => UpdateText();
-
-        public override void OnLeftRoom() => UpdateText();
-        public override void OnPlayerLeftRoom(Player otherPlayer) => UpdateText();
-
-        private void UpdateText()
-        {
-            if (PhotonNetwork.CurrentRoom == null)
-            {
-                _tmp.text = string.Format(_format, 0, _staticDataService.Config.MaxPlayersCount);
-                return;
-            }
-
-            _tmp.text = string.Format(_format, PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers);
-        }
+        private void OnPlayersCountChanged(int count) => _tmp.text = string.Format(_format, count, _playersCountObserver.MaxCount);
     }
 }

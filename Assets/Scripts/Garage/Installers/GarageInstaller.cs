@@ -15,6 +15,7 @@ namespace Garage.Installers
         [SerializeField] private CarSpawnPoint _carSpawnPoint;
         [SerializeField] private Camera _camera;
         [SerializeField] private RoomManager _roomManager;
+        [SerializeField] private RoomPlayersCountObserver _roomPlayersCountObserver;
 
         [Header("Camera Preferences")]
         [SerializeField] private OrbitingState.Preferences _orbitingPreferences;
@@ -27,6 +28,7 @@ namespace Garage.Installers
             _carSpawnPoint ??= FindObjectOfType<CarSpawnPoint>(true);
             _camera ??= FindObjectOfType<Camera>(true);
             _roomManager ??= FindObjectOfType<RoomManager>(true);
+            _roomPlayersCountObserver ??= FindObjectOfType<RoomPlayersCountObserver>(true);
         }
 
         #endregion
@@ -37,6 +39,7 @@ namespace Garage.Installers
             Container.Bind<CarSelector>().AsSingle();
             Container.BindInstance(_camera).AsSingle();
             Container.BindInstance(_roomManager).AsSingle();
+            Container.BindInstance(_roomPlayersCountObserver).AsSingle();
 
             BindCameraStateMachine();
             EnterCameraDefaultState();
