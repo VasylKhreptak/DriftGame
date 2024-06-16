@@ -4163,6 +4163,7 @@ GameObject:
   - component: {fileID: 6442378983123636449}
   - component: {fileID: 7765633849049017080}
   - component: {fileID: 8183159219897527909}
+  - component: {fileID: 3831818560315159396}
   m_Layer: 3
   m_Name: BaseCar
   m_TagString: Untagged
@@ -4397,6 +4398,19 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &3831818560315159396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812341264395995355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 0
 --- !u!1 &6904375998893916450
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,12 +12,13 @@ using Gameplay.TimeManagement;
 using Infrastructure.Services.Advertisement.Core;
 using Infrastructure.StateMachine.Main.Core;
 using Multiplayer;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using Zenject;
 
 namespace Gameplay.Installers
 {
-    public class GameplayInstaller : MonoInstaller
+    public class GameplayInstaller : MonoInstaller, IInitializable
     {
         [Header("References")]
         [SerializeField] private ScreenInputService _screenInputService;
@@ -50,15 +51,14 @@ namespace Gameplay.Installers
 
             Container.BindInterfacesTo<ScoreCalculator>().AsSingle();
 
-            BIndPhotonFactory();
             BindInputService();
             BindStateMachine();
             BindDebugOptionsContainer();
             PreloadAd();
-            StartGameplay();
+            MakeInitializable();
         }
 
-        private void BIndPhotonFactory() => Container.Bind<PhotonFactory>().AsSingle();
+        public void Initialize() => StartGameplay();
 
         private void BindInputService()
         {
@@ -90,5 +90,7 @@ namespace Gameplay.Installers
         private void PreloadAd() => _advertisementService.LoadRewardedVideo();
 
         private void StartGameplay() => Container.Resolve<IStateMachine<IGameplayState>>().Enter<InitializeState>();
+
+        private void MakeInitializable() => Container.Bind<IInitializable>().FromInstance(this).AsSingle();
     }
 }
